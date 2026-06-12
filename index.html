@@ -539,14 +539,16 @@
             box-shadow: var(--shadow);
         }
 
-        .gallery-item img {
+        .gallery-item img,
+        .gallery-item video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
 
-        .gallery-item:hover img {
+        .gallery-item:hover img,
+        .gallery-item:hover video {
             transform: scale(1.05);
         }
 
@@ -1070,6 +1072,7 @@
             <!-- Gallery Filter -->
             <div class="portfolio-filter">
                 <button class="filter-btn active" data-filter="all">全部作品</button>
+                <button class="filter-btn" data-filter="video">视频作品</button>
                 <button class="filter-btn" data-filter="portrait">人像摄影</button>
                 <button class="filter-btn" data-filter="landscape">风光摄影</button>
                 <button class="filter-btn" data-filter="street">街头纪实</button>
@@ -1078,6 +1081,40 @@
 
             <!-- Gallery Grid -->
             <div class="gallery" id="gallery">
+                <!-- 视频作品 -->
+                <div class="gallery-item fade-in" data-category="video" data-type="video">
+                    <video src="videos/mv-showcase.mp4"
+                           poster="https://picsum.photos/seed/mv-poster/800/600"
+                           preload="metadata"
+                           muted
+                           loop
+                           playsinline></video>
+                    <div class="gallery-placeholder" style="display:none;">
+                        <div class="icon">🎬</div>
+                        <div class="label">MV 拍摄展示</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>MV 拍摄展示</h4>
+                        <p>视频作品 · 点击播放</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in" data-category="video" data-type="video">
+                    <video src="videos/wedding-showcase.mp4"
+                           poster="https://picsum.photos/seed/wedding-poster/800/600"
+                           preload="metadata"
+                           muted
+                           loop
+                           playsinline></video>
+                    <div class="gallery-placeholder" style="display:none;">
+                        <div class="icon">💒</div>
+                        <div class="label">婚礼摄像展示</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>婚礼摄像展示</h4>
+                        <p>视频作品 · 点击播放</p>
+                    </div>
+                </div>
+
                 <!-- 人像摄影作品 -->
                 <div class="gallery-item fade-in" data-category="portrait">
                     <img src="https://picsum.photos/seed/portrait1/800/600"
@@ -1353,19 +1390,43 @@
         function closeLightbox() {
             lightbox.classList.remove('open');
             document.body.style.overflow = '';
+            const existingVideo = lightbox.querySelector('.lightbox-video');
+            if (existingVideo) {
+                existingVideo.pause();
+                existingVideo.remove();
+            }
+            lightboxImg.style.display = '';
         }
 
         function updateLightbox() {
             const item = currentGalleryItems[currentIndex];
             const img = item.querySelector('img');
+            const video = item.querySelector('video');
             const overlay = item.querySelector('.gallery-overlay');
 
-            // If image loaded, use its src; otherwise use placeholder info
-            if (img && img.style.display !== 'none') {
+            // Remove previous video element
+            const existingVideo = lightbox.querySelector('.lightbox-video');
+            if (existingVideo) existingVideo.remove();
+            lightboxImg.style.display = 'none';
+
+            if (video && video.src && item.dataset.type === 'video') {
+                // Show video in lightbox
+                const lbVideo = document.createElement('video');
+                lbVideo.src = video.src;
+                lbVideo.poster = video.poster;
+                lbVideo.controls = true;
+                lbVideo.autoplay = true;
+                lbVideo.className = 'lightbox-video';
+                lbVideo.style.maxWidth = '90vw';
+                lbVideo.style.maxHeight = '85vh';
+                lbVideo.style.borderRadius = '4px';
+                lightboxImg.parentNode.insertBefore(lbVideo, lightboxImg);
+            } else if (img && img.style.display !== 'none') {
+                lightboxImg.style.display = '';
                 lightboxImg.src = img.src;
                 lightboxImg.alt = img.alt;
             } else {
-                // Use a fallback for the lightbox
+                lightboxImg.style.display = '';
                 lightboxImg.src = img ? img.src : '';
             }
 
