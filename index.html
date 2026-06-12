@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>肖子宸 - 摄影作品集 &amp; 个人简历</title>
+    <style>
+        /* ========== Reset & Base ========== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0d0d0d;
+            --bg-secondary: #141414;
+            --bg-card: #1a1a1a;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-muted: #6b6b6b;
+            --accent: #d4a574;
+            --accent-light: #e8c9a0;
+            --accent-dark: #b8863f;
+            --border: #2a2a2a;
+            --radius: 12px;
+            --radius-sm: 6px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --max-width: 1200px;
+            --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+        a:hover { color: var(--accent-light); }
+
+        img { max-width: 100%; display: block; }
+
+        /* ========== Navigation ========== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 13, 13, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        /* ========== Hero ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 120px 24px 80px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(212, 167, 116, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-bg-text {
+            position: absolute;
+            font-size: clamp(6rem, 15vw, 14rem);
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.015);
+            letter-spacing: 20px;
+            user-select: none;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .hero-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            margin: 0 auto 32px;
+            overflow: hidden;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--accent);
+        }
+
+        .hero-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 12px;
+        }
+
+        .hero .accent-text {
+            color: var(--accent);
+        }
+
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            letter-spacing: 6px;
+            margin-bottom: 24px;
+            font-weight: 300;
+        }
+
+        .hero .bio-short {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #1a1a1a;
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 167, 116, 0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border-color: var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        .scroll-indicator .line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
+        }
+
+        /* ========== Sections ========== */
+        .section {
+            padding: 100px 24px;
+        }
+
+        .section-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 48px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin-top: 16px;
+        }
+
+        /* ========== About ========== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 2;
+        }
+
+        .about-text p:last-child { margin-bottom: 0; }
+
+        .info-cards {
+            display: grid;
+            gap: 16px;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            border-color: rgba(212, 167, 116, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .info-card .label {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .info-card .value {
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        /* ========== Education ========== */
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 8px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--bg-primary);
+        }
+
+        .timeline-item .date {
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-item .institution {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ========== Skills ========== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            border-color: rgba(212, 167, 116, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .skill-card h4 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .skill-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ========== Portfolio Gallery ========== */
+        .portfolio-filter {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 36px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #1a1a1a;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4 / 3;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item:hover {
+            border-color: rgba(212, 167, 116, 0.4);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+            transform: translateY(8px);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            transform: translateY(8px);
+            transition: transform 0.3s ease 0.05s;
+        }
+
+        .gallery-item:hover .gallery-overlay h4,
+        .gallery-item:hover .gallery-overlay p {
+            transform: translateY(0);
+        }
+
+        /* Placeholder style */
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%);
+            color: var(--text-muted);
+            gap: 8px;
+        }
+
+        .gallery-placeholder .icon {
+            font-size: 3rem;
+            opacity: 0.4;
+        }
+
+        .gallery-placeholder .label {
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* ========== Lightbox ========== */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        .lightbox-content img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .lightbox-caption {
+            text-align: center;
+            margin-top: 16px;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 2001;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            color: var(--text-primary);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 2001;
+        }
+
+        .lightbox-nav:hover { background: rgba(255, 255, 255, 0.2); }
+        .lightbox-nav.prev { left: 20px; }
+        .lightbox-nav.next { right: 20px; }
+
+        /* ========== Experience ========== */
+        .exp-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .exp-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 32px;
+            transition: var(--transition);
+        }
+
+        .exp-card:hover {
+            border-color: rgba(212, 167, 116, 0.3);
+        }
+
+        .exp-date {
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            color: var(--accent);
+        }
+
+        .exp-info h3 {
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .exp-info .org {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .exp-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* ========== Contact ========== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            border-color: rgba(212, 167, 116, 0.3);
+        }
+
+        .contact-card .icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-card .label {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .contact-card .value {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            word-break: break-all;
+        }
+
+        /* ========== Footer ========== */
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* ========== Animations ========== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 64px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(13, 13, 13, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 24px;
+                gap: 20px;
+                text-align: center;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: var(--transition);
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav-toggle { display: flex; }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .exp-card {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            }
+
+            .hero-bg-text {
+                font-size: 3rem;
+                letter-spacing: 8px;
+            }
+
+            .lightbox-nav.prev { left: 8px; }
+            .lightbox-nav.next { right: 8px; }
+        }
+
+        @media (max-width: 480px) {
+            .section { padding: 60px 16px; }
+            .hero { padding: 100px 16px 60px; }
+            .hero h1 { font-size: 2rem; }
+            .gallery { grid-template-columns: 1fr; }
+            .btn { padding: 10px 20px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">XIAO</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">关于</a></li>
+                <li><a href="#education">教育</a></li>
+                <li><a href="#skills">技能</a></li>
+                <li><a href="#portfolio">作品集</a></li>
+                <li><a href="#experience">经历</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg-text">PHOTOGRAPHY</div>
+        <div class="hero-content">
+            <div class="hero-avatar">
+                <span>📷</span>
+                <!-- 替换为真实头像: <img src="images/avatar.jpg" alt="肖子宸"> -->
+            </div>
+            <h1>肖<span class="accent-text">子</span>宸</h1>
+            <p class="subtitle">摄 影 师 · 视 觉 创 作 者</p>
+            <p class="bio-short">
+                用镜头捕捉光影的瞬间，用画面讲述无言的故事。
+                专注于人像摄影、风光摄影与纪实摄影，追求真实与美学的完美结合。
+            </p>
+            <div class="hero-actions">
+                <a href="#portfolio" class="btn btn-primary">📸 查看作品集</a>
+                <a href="#contact" class="btn btn-outline">✉️ 联系我</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>向下滚动</span>
+            <div class="line"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-inner">
+            <p class="section-label">01 / 关于我</p>
+            <h2 class="section-title">关于肖子宸</h2>
+            <div class="about-grid">
+                <div class="about-text fade-in">
+                    <p>
+                        你好，我是肖子宸，一名热爱摄影的视觉创作者。从第一次拿起相机开始，
+                        我就被光影的魅力深深吸引。对我而言，摄影不仅仅是按下快门，
+                        更是对生活的观察、对情感的捕捉、对时间的凝固。
+                    </p>
+                    <p>
+                        我的摄影之路始于大学时期，从基础的构图理论到后期处理技术，
+                        我不断探索着影像表达的无限可能。每一次拍摄都是一次与世界的对话，
+                        每一张照片都是一个独特的故事。
+                    </p>
+                    <p>
+                        我相信，好的照片不需要过多的解释——它能直接触动人心。
+                        我致力于用镜头记录真实、传递情感，让每一个瞬间都成为永恒的回忆。
+                    </p>
+                </div>
+                <div class="info-cards fade-in">
+                    <div class="info-card">
+                        <div class="label">姓名</div>
+                        <div class="value">肖子宸</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="label">专业方向</div>
+                        <div class="value">摄影 / 视觉传达</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="label">所在地</div>
+                        <div class="value">中国 · 北京</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="label">拍摄风格</div>
+                        <div class="value">纪实 · 人像 · 风光 · 街拍</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section" id="education" style="background: var(--bg-secondary);">
+        <div class="section-inner">
+            <p class="section-label">02 / 教育背景</p>
+            <h2 class="section-title">学习经历</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="date">2022 - 2026</div>
+                    <h3>摄影专业 · 本科</h3>
+                    <div class="institution">北京电影学院 · 摄影学院</div>
+                    <p>主修课程：摄影基础、数字影像处理、摄影构图学、色彩管理、灯光艺术、人像摄影、风光摄影、纪实摄影、摄影史</p>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="date">2025</div>
+                    <h3>交换生项目</h3>
+                    <div class="institution">东京艺术大学 · 映像研究科</div>
+                    <p>参与国际摄影交流项目，学习日本摄影美学与暗房技术，完成「城市·光影」系列作品</p>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="date">2024</div>
+                    <h3>摄影工作坊</h3>
+                    <div class="institution">Magnum Photos Workshop · 上海</div>
+                    <p>参加马格南图片社在中国举办的大师班，深入学习纪实摄影的叙事方法与编辑技巧</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="section-inner">
+            <p class="section-label">03 / 专业技能</p>
+            <h2 class="section-title">摄影与后期技能</h2>
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">📷</div>
+                    <h4>人像摄影</h4>
+                    <p>擅长自然光与影棚布光，能够引导模特展现最自然的表情与姿态，捕捉人物独特的气质与情感</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">🏔️</div>
+                    <h4>风光摄影</h4>
+                    <p>熟练运用黄金时刻与蓝调时刻的光线，掌握长时间曝光、HDR合成等风光摄影核心技法</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">🎨</div>
+                    <h4>Lightroom 后期</h4>
+                    <p>精通 Lightroom Classic 的调色、色彩分级与批量处理，能高效完成大量图片的统一风格调整</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">🖼️</div>
+                    <h4>Photoshop 精修</h4>
+                    <p>掌握 Photoshop 的高级修图、人像精修、创意合成技术，能够实现从基础润色到复杂创意后期</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">🎬</div>
+                    <h4>视频拍摄与剪辑</h4>
+                    <p>具备视频拍摄与剪辑能力，熟悉 Premiere Pro 与 DaVinci Resolve，能够完成短片与Vlog制作</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">🎞️</div>
+                    <h4>胶片摄影</h4>
+                    <p>熟悉 135、120 胶片相机的操作，掌握黑白与彩色胶片的冲洗流程及暗房放大技术</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section" id="portfolio" style="background: var(--bg-secondary);">
+        <div class="section-inner">
+            <p class="section-label">04 / 作品展示</p>
+            <h2 class="section-title">摄影作品集</h2>
+
+            <!-- Gallery Filter -->
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">全部作品</button>
+                <button class="filter-btn" data-filter="portrait">人像摄影</button>
+                <button class="filter-btn" data-filter="landscape">风光摄影</button>
+                <button class="filter-btn" data-filter="street">街头纪实</button>
+                <button class="filter-btn" data-filter="film">胶片作品</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery" id="gallery">
+                <!-- 人像摄影作品 -->
+                <div class="gallery-item fade-in" data-category="portrait">
+                    <img src="https://picsum.photos/seed/portrait1/800/600"
+                         alt="人像作品 - 晨光"
+                         loading="lazy"
+                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
+                    <div class="gallery-placeholder" style="display:none;">
+                        <div class="icon">📷</div>
+                        <div class="label">人像作品 - 晨光</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>晨光</h4>
+                        <p>人像摄影 · 2024</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in" data-category="portrait">
+                    <img src="https://picsum.photos/seed/portrait2/800/600"
+                         alt="人像作品 - 静谧"
+                         loading="lazy"
+                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
+                    <div class="gallery-placeholder" style="display:none;">
+                        <div class="icon">📷</div>
+                        <div class="label">人像作品 - 静谧</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>静谧</h4>
+                        <p>人像摄影 · 2025</p>
+                    </div>
+                </div>
+
+                <!-- 风光摄影作品 -->
+                <div class="gallery-item fade-in" data-category="landscape">
+                    <img src="https://picsum.photos/seed/landscape1/800/600"
+                         alt="风光作品 - 金色山脉"
+                         loading="lazy"
+                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
+                    <div class="gallery-placeholder" style="display:none;">
+                        <div class="icon">🏔️</div>
+                        <div class="label">风光作品 - 金色山脉</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>金色山脉</h4>
+                        <p>风光摄影 · 2024</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in" data-category="landscape">
+                    <img src="https://picsum.photos/seed/landscape2/800/600"
+                         alt="风光作品 - 海浪"
+                         loading="lazy"
+                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
+                    <div class="gallery-placeholder" style="display:none;">
+                        <div class="icon">🏔️</div>
+                        <div class="label">风光作品 - 海浪</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>海浪</h4>
+                        <p>风光摄影 · 2025</p>
+                    </div>
+                </div>
+
+                <!-- 街头纪实作品 -->
+                <div class="gallery-item fade-in" data-category="street">
+                    <img src="https://picsum.photos/seed/street1/800/600"
+                         alt="纪实作品 - 城市脉搏"
+                         loading="lazy"
+                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
+                    <div class="gallery-placeholder" style="display:none;">
+                        <div class="icon">🏙️</div>
+                        <div class="label">纪实作品 - 城市脉搏</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>城市脉搏</h4>
+                        <p>街头纪实 · 2024</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in" data-category="street">
+                    <img src="https://picsum.photos/seed/street2/800/600"
+                         alt="纪实作品 - 老街记忆"
+                         loading="lazy"
+                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
+                    <div class="gallery-placeholder" style="display:none;">
+                        <div class="icon">🏙️</div>
+                        <div class="label">纪实作品 - 老街记忆</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>老街记忆</h4>
+                        <p>街头纪实 · 2025</p>
+                    </div>
+                </div>
+
+                <!-- 胶片作品 -->
+                <div class="gallery-item fade-in" data-category="film">
+                    <img src="https://picsum.photos/seed/film1/800/600"
+                         alt="胶片作品 - 时光印记"
+                         loading="lazy"
+                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
+                    <div class="gallery-placeholder" style="display:none;">
+                        <div class="icon">🎞️</div>
+                        <div class="label">胶片作品 - 时光印记</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>时光印记</h4>
+                        <p>胶片摄影 · 2024</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in" data-category="film">
+                    <img src="https://picsum.photos/seed/film2/800/600"
+                         alt="胶片作品 - 夏末"
+                         loading="lazy"
+                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
+                    <div class="gallery-placeholder" style="display:none;">
+                        <div class="icon">🎞️</div>
+                        <div class="label">胶片作品 - 夏末</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>夏末</h4>
+                        <p>胶片摄影 · 2025</p>
+                    </div>
+                </div>
+
+                <!-- 额外风光 -->
+                <div class="gallery-item fade-in" data-category="landscape">
+                    <img src="https://picsum.photos/seed/landscape3/800/600"
+                         alt="风光作品 - 星空"
+                         loading="lazy"
+                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
+                    <div class="gallery-placeholder" style="display:none;">
+                        <div class="icon">🏔️</div>
+                        <div class="label">风光作品 - 星空</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>星空</h4>
+                        <p>风光摄影 · 2025</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <button class="lightbox-nav prev" id="lightboxPrev">&#10094;</button>
+        <button class="lightbox-nav next" id="lightboxNext">&#10095;</button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImg">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <div class="section-inner">
+            <p class="section-label">05 / 实践经历</p>
+            <h2 class="section-title">摄影实践与项目</h2>
+            <div class="exp-grid">
+                <div class="exp-card fade-in">
+                    <div class="exp-date">2025.09 - 至今</div>
+                    <div class="exp-info">
+                        <h3>自由摄影师</h3>
+                        <div class="org">Freelance</div>
+                        <p>承接个人写真、情侣写真、毕业照等约拍项目，累计服务超过80组客户。同时为本地时尚品牌提供产品拍摄与视觉方案设计。</p>
+                    </div>
+                </div>
+                <div class="exp-card fade-in">
+                    <div class="exp-date">2025.03 - 2025.08</div>
+                    <div class="exp-info">
+                        <h3>摄影助理（实习）</h3>
+                        <div class="org">北京某知名摄影工作室</div>
+                        <p>协助主摄影师完成商业拍摄项目，包括影棚搭建、灯光调试、前期准备与后期处理。参与了杂志封面拍摄与品牌广告拍摄项目。</p>
+                    </div>
+                </div>
+                <div class="exp-card fade-in">
+                    <div class="exp-date">2024.06 - 至今</div>
+                    <div class="exp-info">
+                        <h3>校园摄影社团 · 社长</h3>
+                        <div class="org">北京电影学院</div>
+                        <p>组织策划校内摄影展览3场，举办摄影分享会10余次。带领社团成员完成「北京记忆」系列城市纪实摄影项目。</p>
+                    </div>
+                </div>
+                <div class="exp-card fade-in">
+                    <div class="exp-date">2024.10</div>
+                    <div class="exp-info">
+                        <h3>「城市·光影」个人摄影展</h3>
+                        <div class="org">北京 · 798艺术区</div>
+                        <p>在798艺术区举办首次个人摄影作品展，展出30幅精选作品，涵盖人像、风光与纪实三个主题，获得校内外广泛好评。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="section-inner">
+            <p class="section-label">06 / 获奖与荣誉</p>
+            <h2 class="section-title">获奖经历</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="date">2025</div>
+                    <h3>全国大学生摄影大赛 · 一等奖</h3>
+                    <div class="institution">中国摄影家协会</div>
+                    <p>获奖作品《城市脉搏》系列，以独特的视角展现了中国城市化进程中的日常瞬间</p>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="date">2024</div>
+                    <h3>青年视觉摄影奖 · 最佳新人奖</h3>
+                    <div class="institution">青年视觉杂志</div>
+                    <p>从3000多名参赛者中脱颖而出，被评为年度最具潜力的青年摄影师之一</p>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="date">2024</div>
+                    <h3>第27届北京大学生摄影展 · 银奖</h3>
+                    <div class="institution">北京市摄影家协会</div>
+                    <p>参展作品《时光印记》获得评委一致好评</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="section-inner">
+            <p class="section-label">07 / 联系方式</p>
+            <h2 class="section-title">联系我</h2>
+            <div class="contact-grid">
+                <div class="contact-card fade-in">
+                    <div class="icon">📧</div>
+                    <div class="label">电子邮箱</div>
+                    <div class="value">xiao.zichen@photo.cn</div>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="icon">📱</div>
+                    <div class="label">联系电话</div>
+                    <div class="value">+86 138-XXXX-XXXX</div>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="icon">📸</div>
+                    <div class="label">Instagram</div>
+                    <div class="value">@xiao_zichen_photo</div>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="icon">🐦</div>
+                    <div class="label">小红书</div>
+                    <div class="value">@摄影师肖子宸</div>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="icon">🌐</div>
+                    <div class="label">个人网站</div>
+                    <div class="value">www.xiao-zichen.com</div>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="icon">📍</div>
+                    <div class="label">所在地</div>
+                    <div class="value">中国 · 北京市朝阳区</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 肖子宸 · 保留所有权利</p>
+        <p style="margin-top: 8px; color: var(--text-muted);">用镜头记录世界，用光影书写故事</p>
+    </footer>
+
+    <script>
+        // ========== Navigation Toggle ==========
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close nav on link click (mobile)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // ========== Scroll Fade-In Animation ==========
+        const fadeEls = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -30px 0px'
+        });
+
+        fadeEls.forEach(el => observer.observe(el));
+
+        // ========== Portfolio Filter ==========
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                // Filter items
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = '';
+                        // Re-trigger animation
+                        item.classList.remove('visible');
+                        requestAnimationFrame(() => {
+                            observer.observe(item);
+                        });
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // ========== Lightbox ==========
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+
+        let currentGalleryItems = [];
+        let currentIndex = 0;
+
+        function getVisibleGalleryItems() {
+            return Array.from(galleryItems).filter(item => item.style.display !== 'none');
+        }
+
+        function openLightbox(index) {
+            currentGalleryItems = getVisibleGalleryItems();
+            currentIndex = index;
+            updateLightbox();
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightbox() {
+            const item = currentGalleryItems[currentIndex];
+            const img = item.querySelector('img');
+            const overlay = item.querySelector('.gallery-overlay');
+
+            // If image loaded, use its src; otherwise use placeholder info
+            if (img && img.style.display !== 'none') {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+            } else {
+                // Use a fallback for the lightbox
+                lightboxImg.src = img ? img.src : '';
+            }
+
+            if (overlay) {
+                const h4 = overlay.querySelector('h4');
+                const p = overlay.querySelector('p');
+                lightboxCaption.textContent = h4 && p ? `${h4.textContent} — ${p.textContent}` : '';
+            }
+        }
+
+        function navigateLightbox(direction) {
+            if (currentGalleryItems.length === 0) return;
+            currentIndex = (currentIndex + direction + currentGalleryItems.length) % currentGalleryItems.length;
+            updateLightbox();
+        }
+
+        // Gallery item click
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                // Find the index among visible items
+                const visibleItems = getVisibleGalleryItems();
+                const visibleIndex = visibleItems.indexOf(item);
+                if (visibleIndex >= 0) {
+                    openLightbox(visibleIndex);
+                }
+            });
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
+        lightboxNext.addEventListener('click', () => navigateLightbox(1));
+
+        // Close lightbox on background click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        // ========== Smooth scroll for all anchor links ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.getElementById('nav').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ========== Nav background on scroll ==========
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(13, 13, 13, 0.95)';
+            } else {
+                nav.style.background = 'rgba(13, 13, 13, 0.85)';
+            }
+        });
+
+        console.log('👋 你好！欢迎来到肖子宸的摄影作品集网站。');
+        console.log('📷 所有图片均为占位图，请替换为真实的摄影作品。');
+    </script>
+</body>
+</html>
