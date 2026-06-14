@@ -493,6 +493,65 @@
         }
 
         /* ========== Portfolio Gallery ========== */
+        .gallery-category {
+            margin-bottom: 48px;
+        }
+
+        .gallery-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .gallery-scroll {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 12px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) transparent;
+        }
+
+        .gallery-scroll::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .gallery-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .gallery-scroll::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .gallery-scroll .gallery-item {
+            flex: 0 0 300px;
+            scroll-snap-align: start;
+            aspect-ratio: 4 / 3;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-scroll .gallery-item {
+                flex: 0 0 260px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-scroll .gallery-item {
+                flex: 0 0 220px;
+            }
+        }
+
+        /* ========== Old Filter (removed) ========== */
         .portfolio-filter {
             display: flex;
             gap: 12px;
@@ -1069,191 +1128,34 @@
             <p class="section-label">05 / 作品展示</p>
             <h2 class="section-title">摄影作品集</h2>
 
-            <!-- Gallery Filter -->
-            <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="all">全部作品</button>
-                <button class="filter-btn" data-filter="video">视频作品</button>
-                <button class="filter-btn" data-filter="portrait">人像摄影</button>
-                <button class="filter-btn" data-filter="landscape">风光摄影</button>
-                <button class="filter-btn" data-filter="street">街头纪实</button>
-                <button class="filter-btn" data-filter="film">胶片作品</button>
+            <!-- 视频作品 -->
+            <div class="gallery-category fade-in">
+                <h3 class="category-title">🎬 视频作品</h3>
+                <div class="gallery-scroll" id="scroll-video"></div>
             </div>
 
-            <!-- Gallery Grid -->
-            <div class="gallery" id="gallery">
-                <!-- 视频作品 -->
-                <div class="gallery-item fade-in" data-category="video" data-type="video">
-                    <video src="videos/videosmv-showcase.mp4.mp4"
-                           poster="https://picsum.photos/seed/mv-poster/800/600"
-                           preload="metadata"
-                           muted
-                           loop
-                           playsinline></video>
-                    <div class="gallery-placeholder" style="display:none;">
-                        <div class="icon">🎬</div>
-                        <div class="label">MV 拍摄展示</div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>MV 拍摄展示</h4>
-                        <p>视频作品 · 点击播放</p>
-                    </div>
-                </div>
-                <div class="gallery-item fade-in" data-category="video" data-type="video">
-                    <video src="videos/videoswedding-showcase.mp4.mp4"
-                           poster="https://picsum.photos/seed/wedding-poster/800/600"
-                           preload="metadata"
-                           muted
-                           loop
-                           playsinline></video>
-                    <div class="gallery-placeholder" style="display:none;">
-                        <div class="icon">💒</div>
-                        <div class="label">婚礼摄像展示</div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>婚礼摄像展示</h4>
-                        <p>视频作品 · 点击播放</p>
-                    </div>
-                </div>
+            <!-- 产品人像 -->
+            <div class="gallery-category fade-in">
+                <h3 class="category-title">📷 产品人像</h3>
+                <div class="gallery-scroll" id="scroll-产品人像"></div>
+            </div>
 
-                <!-- 人像摄影作品 -->
-                <div class="gallery-item fade-in" data-category="portrait">
-                    <img src="https://picsum.photos/seed/portrait1/800/600"
-                         alt="人像作品 - 晨光"
-                         loading="lazy"
-                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
-                    <div class="gallery-placeholder" style="display:none;">
-                        <div class="icon">📷</div>
-                        <div class="label">人像作品 - 晨光</div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>晨光</h4>
-                        <p>人像摄影 · 2024</p>
-                    </div>
-                </div>
+            <!-- 人像摄影 -->
+            <div class="gallery-category fade-in">
+                <h3 class="category-title">🧑 人像摄影</h3>
+                <div class="gallery-scroll" id="scroll-人像摄影"></div>
+            </div>
 
-                <div class="gallery-item fade-in" data-category="portrait">
-                    <img src="https://picsum.photos/seed/portrait2/800/600"
-                         alt="人像作品 - 静谧"
-                         loading="lazy"
-                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
-                    <div class="gallery-placeholder" style="display:none;">
-                        <div class="icon">📷</div>
-                        <div class="label">人像作品 - 静谧</div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>静谧</h4>
-                        <p>人像摄影 · 2025</p>
-                    </div>
-                </div>
+            <!-- 产品摄影 -->
+            <div class="gallery-category fade-in">
+                <h3 class="category-title">🖼️ 产品摄影</h3>
+                <div class="gallery-scroll" id="scroll-产品摄影"></div>
+            </div>
 
-                <!-- 风光摄影作品 -->
-                <div class="gallery-item fade-in" data-category="landscape">
-                    <img src="https://picsum.photos/seed/landscape1/800/600"
-                         alt="风光作品 - 金色山脉"
-                         loading="lazy"
-                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
-                    <div class="gallery-placeholder" style="display:none;">
-                        <div class="icon">🏔️</div>
-                        <div class="label">风光作品 - 金色山脉</div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>金色山脉</h4>
-                        <p>风光摄影 · 2024</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item fade-in" data-category="landscape">
-                    <img src="https://picsum.photos/seed/landscape2/800/600"
-                         alt="风光作品 - 海浪"
-                         loading="lazy"
-                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
-                    <div class="gallery-placeholder" style="display:none;">
-                        <div class="icon">🏔️</div>
-                        <div class="label">风光作品 - 海浪</div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>海浪</h4>
-                        <p>风光摄影 · 2025</p>
-                    </div>
-                </div>
-
-                <!-- 街头纪实作品 -->
-                <div class="gallery-item fade-in" data-category="street">
-                    <img src="https://picsum.photos/seed/street1/800/600"
-                         alt="纪实作品 - 城市脉搏"
-                         loading="lazy"
-                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
-                    <div class="gallery-placeholder" style="display:none;">
-                        <div class="icon">🏙️</div>
-                        <div class="label">纪实作品 - 城市脉搏</div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>城市脉搏</h4>
-                        <p>街头纪实 · 2024</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item fade-in" data-category="street">
-                    <img src="https://picsum.photos/seed/street2/800/600"
-                         alt="纪实作品 - 老街记忆"
-                         loading="lazy"
-                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
-                    <div class="gallery-placeholder" style="display:none;">
-                        <div class="icon">🏙️</div>
-                        <div class="label">纪实作品 - 老街记忆</div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>老街记忆</h4>
-                        <p>街头纪实 · 2025</p>
-                    </div>
-                </div>
-
-                <!-- 胶片作品 -->
-                <div class="gallery-item fade-in" data-category="film">
-                    <img src="https://picsum.photos/seed/film1/800/600"
-                         alt="胶片作品 - 时光印记"
-                         loading="lazy"
-                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
-                    <div class="gallery-placeholder" style="display:none;">
-                        <div class="icon">🎞️</div>
-                        <div class="label">胶片作品 - 时光印记</div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>时光印记</h4>
-                        <p>胶片摄影 · 2024</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item fade-in" data-category="film">
-                    <img src="https://picsum.photos/seed/film2/800/600"
-                         alt="胶片作品 - 夏末"
-                         loading="lazy"
-                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
-                    <div class="gallery-placeholder" style="display:none;">
-                        <div class="icon">🎞️</div>
-                        <div class="label">胶片作品 - 夏末</div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>夏末</h4>
-                        <p>胶片摄影 · 2025</p>
-                    </div>
-                </div>
-
-                <!-- 额外风光 -->
-                <div class="gallery-item fade-in" data-category="landscape">
-                    <img src="https://picsum.photos/seed/landscape3/800/600"
-                         alt="风光作品 - 星空"
-                         loading="lazy"
-                         onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
-                    <div class="gallery-placeholder" style="display:none;">
-                        <div class="icon">🏔️</div>
-                        <div class="label">风光作品 - 星空</div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h4>星空</h4>
-                        <p>风光摄影 · 2025</p>
-                    </div>
-                </div>
+            <!-- 建筑摄影 -->
+            <div class="gallery-category fade-in">
+                <h3 class="category-title">🏛️ 建筑摄影</h3>
+                <div class="gallery-scroll" id="scroll-建筑摄影"></div>
             </div>
         </div>
     </section>
@@ -1336,33 +1238,115 @@
 
         fadeEls.forEach(el => observer.observe(el));
 
-        // ========== Portfolio Filter ==========
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
+        // ========== Gallery Dynamic Population ==========
+        const basePath = 'images/';
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Update active button
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+        const galleryData = {
+            'video': [
+                { src: 'videos/videosmv-showcase.mp4.mp4', title: 'MV 拍摄展示', isVideo: true },
+                { src: 'videos/videoswedding-showcase.mp4.mp4', title: '婚礼摄像展示', isVideo: true },
+            ],
+            '产品人像': [
+                { src: '产品人像/1.jpg', title: '产品人像 · 壹' },
+                { src: '产品人像/2.jpg', title: '产品人像 · 贰' },
+                { src: '产品人像/3.jpg', title: '产品人像 · 叁' },
+                { src: '产品人像/4.jpg', title: '产品人像 · 肆' },
+            ],
+            '人像摄影': [
+                { src: '人像摄影/人像 (1).jpg', title: '人像摄影 · 壹' },
+                { src: '人像摄影/人像 (2).jpg', title: '人像摄影 · 贰' },
+                { src: '人像摄影/人像 (3).jpg', title: '人像摄影 · 叁' },
+                { src: '人像摄影/人像 (4).jpg', title: '人像摄影 · 肆' },
+                { src: '人像摄影/人像 (5).jpg', title: '人像摄影 · 伍' },
+                { src: '人像摄影/人像 (6).jpg', title: '人像摄影 · 陆' },
+                { src: '人像摄影/人像 (7).jpg', title: '人像摄影 · 柒' },
+                { src: '人像摄影/人像 (8).jpg', title: '人像摄影 · 捌' },
+                { src: '人像摄影/人像 (9).jpg', title: '人像摄影 · 玖' },
+                { src: '人像摄影/人像 (10).jpg', title: '人像摄影 · 拾' },
+                { src: '人像摄影/人像 (11).jpg', title: '人像摄影 · 拾壹' },
+            ],
+            '产品摄影': [
+                { src: '产品摄影/产品系列 (1).jpg', title: '产品摄影 · 壹' },
+                { src: '产品摄影/产品系列 (2).jpg', title: '产品摄影 · 贰' },
+                { src: '产品摄影/产品系列 (3).JPG', title: '产品摄影 · 叁' },
+                { src: '产品摄影/产品系列 (4).jpg', title: '产品摄影 · 肆' },
+                { src: '产品摄影/产品系列 (5).jpg', title: '产品摄影 · 伍' },
+                { src: '产品摄影/产品系列 (6).jpg', title: '产品摄影 · 陆' },
+                { src: '产品摄影/产品系列 (7).jpg', title: '产品摄影 · 柒' },
+                { src: '产品摄影/产品系列 (8).jpg', title: '产品摄影 · 捌' },
+                { src: '产品摄影/产品系列 (9).jpg', title: '产品摄影 · 玖' },
+                { src: '产品摄影/产品系列 (10).jpg', title: '产品摄影 · 拾' },
+                { src: '产品摄影/产品系列 (11).jpg', title: '产品摄影 · 拾壹' },
+                { src: '产品摄影/产品系列 (12).jpg', title: '产品摄影 · 拾贰' },
+                { src: '产品摄影/产品系列 (13).jpg', title: '产品摄影 · 拾叁' },
+                { src: '产品摄影/产品系列 (14).jpg', title: '产品摄影 · 拾肆' },
+                { src: '产品摄影/产品系列 (15).JPG', title: '产品摄影 · 拾伍' },
+                { src: '产品摄影/产品系列 (16).jpg', title: '产品摄影 · 拾陆' },
+                { src: '产品摄影/产品系列 (17).jpg', title: '产品摄影 · 拾柒' },
+                { src: '产品摄影/产品系列 (18).jpg', title: '产品摄影 · 拾捌' },
+                { src: '产品摄影/产品系列 (19).jpg', title: '产品摄影 · 拾玖' },
+                { src: '产品摄影/产品系列 (20).jpg', title: '产品摄影 · 贰拾' },
+                { src: '产品摄影/产品系列 (21).jpg', title: '产品摄影 · 贰拾壹' },
+                { src: '产品摄影/产品系列 (22).jpg', title: '产品摄影 · 贰拾贰' },
+                { src: '产品摄影/产品系列 (23).jpg', title: '产品摄影 · 贰拾叁' },
+                { src: '产品摄影/产品系列 (24).jpg', title: '产品摄影 · 贰拾肆' },
+                { src: '产品摄影/产品系列 (25).JPG', title: '产品摄影 · 贰拾伍' },
+                { src: '产品摄影/产品系列 (26).jpg', title: '产品摄影 · 贰拾陆' },
+                { src: '产品摄影/产品系列 (27).JPG', title: '产品摄影 · 贰拾柒' },
+                { src: '产品摄影/产品系列 (28).jpg', title: '产品摄影 · 贰拾捌' },
+            ],
+            '建筑摄影': [
+                { src: '建筑摄影/2f278bdc794d130eba3517f294e696b.jpg', title: '建筑摄影 · 壹' },
+                { src: '建筑摄影/81a9570956dde4c58998e72b71a8ae5.jpg', title: '建筑摄影 · 贰' },
+                { src: '建筑摄影/48c9de9cda9f09af3641ffdbbe31081.jpg', title: '建筑摄影 · 叁' },
+                { src: '建筑摄影/9a879c1c70da82f4a595873b552f95e.jpg', title: '建筑摄影 · 肆' },
+                { src: '建筑摄影/c7961d74cf250d0845f34105da784e2.jpg', title: '建筑摄影 · 伍' },
+            ],
+        };
 
-                const filter = btn.dataset.filter;
-
-                // Filter items
-                galleryItems.forEach(item => {
-                    if (filter === 'all' || item.dataset.category === filter) {
-                        item.style.display = '';
-                        // Re-trigger animation
-                        item.classList.remove('visible');
-                        requestAnimationFrame(() => {
-                            observer.observe(item);
-                        });
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
+        // Populate gallery scroll containers
+        Object.keys(galleryData).forEach(category => {
+            const container = document.getElementById('scroll-' + category);
+            if (!container) return;
+            galleryData[category].forEach((item, idx) => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                div.dataset.category = category;
+                div.dataset.index = idx;
+                if (item.isVideo) {
+                    div.dataset.type = 'video';
+                    div.innerHTML = `
+                        <video src="${encodeURI(item.src)}"
+                               preload="metadata" muted loop playsinline
+                               style="width:100%;height:100%;object-fit:cover;"></video>
+                        <div class="gallery-placeholder" style="display:none;">
+                            <div class="icon">🎬</div>
+                            <div class="label">${item.title}</div>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h4>${item.title}</h4>
+                            <p>视频作品 · 点击播放</p>
+                        </div>`;
+                } else {
+                    div.innerHTML = `
+                        <img src="${encodeURI(basePath + item.src)}"
+                             alt="${item.title}"
+                             loading="lazy"
+                             onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
+                        <div class="gallery-placeholder" style="display:none;">
+                            <div class="icon">📷</div>
+                            <div class="label">${item.title}</div>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h4>${item.title}</h4>
+                        </div>`;
+                }
+                container.appendChild(div);
             });
         });
+
+        // Re-collect all gallery items after dynamic generation
+        const allGalleryItems = () => document.querySelectorAll('.gallery-item');
 
         // ========== Lightbox ==========
         const lightbox = document.getElementById('lightbox');
@@ -1375,12 +1359,8 @@
         let currentGalleryItems = [];
         let currentIndex = 0;
 
-        function getVisibleGalleryItems() {
-            return Array.from(galleryItems).filter(item => item.style.display !== 'none');
-        }
-
         function openLightbox(index) {
-            currentGalleryItems = getVisibleGalleryItems();
+            currentGalleryItems = Array.from(allGalleryItems());
             currentIndex = index;
             updateLightbox();
             lightbox.classList.add('open');
@@ -1400,20 +1380,18 @@
 
         function updateLightbox() {
             const item = currentGalleryItems[currentIndex];
+            if (!item) return;
             const img = item.querySelector('img');
             const video = item.querySelector('video');
             const overlay = item.querySelector('.gallery-overlay');
 
-            // Remove previous video element
             const existingVideo = lightbox.querySelector('.lightbox-video');
             if (existingVideo) existingVideo.remove();
             lightboxImg.style.display = 'none';
 
             if (video && video.src && item.dataset.type === 'video') {
-                // Show video in lightbox
                 const lbVideo = document.createElement('video');
                 lbVideo.src = video.src;
-                lbVideo.poster = video.poster;
                 lbVideo.controls = true;
                 lbVideo.autoplay = true;
                 lbVideo.className = 'lightbox-video';
@@ -1433,7 +1411,7 @@
             if (overlay) {
                 const h4 = overlay.querySelector('h4');
                 const p = overlay.querySelector('p');
-                lightboxCaption.textContent = h4 && p ? `${h4.textContent} — ${p.textContent}` : '';
+                lightboxCaption.textContent = h4 ? h4.textContent + (p ? ' — ' + p.textContent : '') : '';
             }
         }
 
@@ -1443,28 +1421,23 @@
             updateLightbox();
         }
 
-        // Gallery item click
-        galleryItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                // Find the index among visible items
-                const visibleItems = getVisibleGalleryItems();
-                const visibleIndex = visibleItems.indexOf(item);
-                if (visibleIndex >= 0) {
-                    openLightbox(visibleIndex);
-                }
-            });
+        // Delegate click events on gallery items (since they are dynamically generated)
+        document.getElementById('portfolio').addEventListener('click', (e) => {
+            const item = e.target.closest('.gallery-item');
+            if (!item) return;
+            const items = Array.from(allGalleryItems());
+            const index = items.indexOf(item);
+            if (index >= 0) openLightbox(index);
         });
 
         lightboxClose.addEventListener('click', closeLightbox);
         lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
         lightboxNext.addEventListener('click', () => navigateLightbox(1));
 
-        // Close lightbox on background click
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (!lightbox.classList.contains('open')) return;
             if (e.key === 'Escape') closeLightbox();
