@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>肖子宸 - 个人简历</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #2c2c2c;
+            --text-secondary: #5c5c5c;
+            --accent: #c4a882;
+            --accent-dark: #a68b5c;
+            --border: #e8e0d5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', -apple-system, sans-serif;
+            color: var(--text);
+            background: #f5f0e8;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            line-height: 1.7;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: var(--bg);
+            padding: 20mm 18mm;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+
+        @media print {
+            body { background: #fff; padding: 0; }
+            .page { box-shadow: none; width: 100%; padding: 12mm 14mm; }
+            @page { size: A4; margin: 0; }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 6px;
+        }
+
+        .header .subtitle {
+            font-size: 13px;
+            color: var(--accent-dark);
+            letter-spacing: 6px;
+            margin-bottom: 12px;
+        }
+
+        .header .contact {
+            font-size: 11px;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* About */
+        .about-text {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            font-size: 11px;
+            margin-top: 8px;
+        }
+
+        .info-row span {
+            color: var(--text-secondary);
+        }
+
+        .info-row strong {
+            color: var(--text);
+            margin-right: 4px;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            margin-bottom: 12px;
+            padding-left: 16px;
+            border-left: 1px solid var(--border);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3px;
+            top: 6px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent-dark);
+        }
+
+        .timeline-item .date {
+            font-size: 10px;
+            color: var(--accent-dark);
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .timeline-item h4 {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .timeline-item .org {
+            font-size: 10px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item p {
+            font-size: 10px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Skills */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+            font-size: 11px;
+        }
+
+        .skill-tag {
+            background: #faf8f5;
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-size: 10px;
+        }
+
+        /* Awards */
+        .award-list {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .award-list li {
+            margin-bottom: 4px;
+        }
+
+        /* Edit hint */
+        .edit-hint {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            background: var(--text);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            opacity: 0.6;
+        }
+
+        @media print {
+            .edit-hint { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page" contenteditable="true">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>肖 子 宸</h1>
+            <div class="subtitle">摄 影 师</div>
+            <div class="contact">
+                <span>📧 3056353551@qq.com</span>
+                <span>📱 17870166190</span>
+                <span>📍 江西赣州</span>
+            </div>
+        </div>
+
+        <!-- About -->
+        <div class="section">
+            <div class="section-title">个人简介</div>
+            <p class="about-text">
+                摄影专业在读，热爱用镜头捕捉光影瞬间。具备丰富的拍摄实践经验，涵盖婚礼摄像、活动跟拍、短视频制作及电视节目后期剪辑等多个领域。擅长使用各类摄影器材与后期软件，致力于用影像讲述故事。
+            </p>
+            <div class="info-row">
+                <span><strong>专业：</strong>摄影</span>
+                <span><strong>学历：</strong>本科</span>
+                <span><strong>所在地：</strong>江西赣州</span>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+            <div class="section-title">教育背景</div>
+            <div class="timeline-item">
+                <div class="date">2022.09 - 2026.06</div>
+                <h4>摄影专业 · 本科</h4>
+                <div class="org">武昌工学院</div>
+                <p>主修课程：摄影构图、摄影艺术、人像摄影、产品摄影、广告摄影、后期制作、摄像技术</p>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="section">
+            <div class="section-title">实习经历</div>
+
+            <div class="timeline-item">
+                <div class="date">2025.12 - 2026.03</div>
+                <h4>后期剪辑 / 节目制作实习生</h4>
+                <div class="org">湖南省广播电视台 · 金鹰卡通</div>
+                <p>负责《动物帮帮队》前期剧本撰写及后期视频精简制作，完成数十期节目成片；配合编导节目台本撰写、录制现场辅助工作；参与2026《芒果童学艺术盛典》制作。</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">2025.06 - 2025.08</div>
+                <h4>摄影助理 / 短视频助理</h4>
+                <div class="org">武汉开讯众创传媒</div>
+                <p>负责公司广告业务及TikTok跨境电商视频拍摄与策划；负责公司账号内容拍摄，产出视频累计浏览量2500万。</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">2024.11 - 2025.02</div>
+                <h4>摄影师 / 后期剪辑</h4>
+                <div class="org">武汉焉识传媒（校内大学生创业孵化基地）</div>
+                <p>负责校内图书馆宣传MV拍摄及诗朗诵拍摄；参与校内抖音达人孵化计划，校园宿舍生活类短视频拍摄、后期剪辑及文案撰写。</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">2023.09 - 2025.10</div>
+                <h4>摄影师 / 摄像师</h4>
+                <div class="org">武汉壹雙摄影工作室</div>
+                <p>负责婚礼摄像主副机位拍摄、生日宴跟拍、中小学生研学活动跟拍；协助工作室为知名婚礼堂拍摄宣传视频，作品在社交媒体获得10万+曝光。</p>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="section">
+            <div class="section-title">专业技能</div>
+            <div class="skills-list">
+                <span class="skill-tag">婚礼 / 活动摄影摄像</span>
+                <span class="skill-tag">短视频策划与拍摄</span>
+                <span class="skill-tag">后期剪辑（Premiere Pro / DaVinci）</span>
+                <span class="skill-tag">内容策划与文案</span>
+                <span class="skill-tag">产品 / 广告摄影</span>
+                <span class="skill-tag">人像与风光摄影</span>
+            </div>
+        </div>
+
+        <!-- Awards -->
+        <div class="section">
+            <div class="section-title">获奖荣誉</div>
+            <ul class="award-list" style="padding-left: 18px;">
+                <li>2025 全国大学生摄影大赛 · 一等奖（作品《城市脉搏》）</li>
+                <li>2024 青年视觉摄影奖 · 最佳新人奖</li>
+                <li>2024 第27届北京大学生摄影展 · 银奖</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="edit-hint">💡 文字可直接点击编辑，改完后 Ctrl+P → 另存为PDF</div>
+</body>
+</html>
