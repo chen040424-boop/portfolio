@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI短剧制作学习计划 & 视频大模型对比</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --card: #fff;
+    --text: #2c2c2c;
+    --text2: #5c5c5c;
+    --accent: #c4a882;
+    --accent2: #a68b5c;
+    --border: #e8e0d5;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'PingFang SC','Microsoft YaHei',sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 40px 20px;
+  }
+  .container { max-width: 1000px; margin: 0 auto; }
+  h1 { text-align:center; font-size:2rem; letter-spacing:3px; margin-bottom:8px; }
+  .subtitle { text-align:center; color:var(--text2); margin-bottom:40px; font-size:0.9rem; }
+
+  h2 {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    margin: 48px 0 24px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--accent);
+    display: flex; align-items:center; gap:10px;
+  }
+  h2 .num { color:var(--accent2); font-size:1rem; }
+
+  h3 { font-size:1.1rem; margin:28px 0 12px; color:var(--accent2); }
+
+  /* Timeline */
+  .phase {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--accent);
+  }
+  .phase-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+  .phase-title { font-size:1.1rem; font-weight:700; }
+  .phase-time { font-size:0.8rem; color:var(--accent2); letter-spacing:1px; background:#f5f0e8; padding:3px 12px; border-radius:20px; }
+  .phase-goal { color:var(--text2); font-size:0.9rem; margin-bottom:14px; padding:8px 12px; background:#faf8f5; border-radius:6px; }
+  .phase ul { padding-left:20px; }
+  .phase li { font-size:0.9rem; margin-bottom:6px; color:var(--text2); }
+  .phase li strong { color:var(--text); }
+
+  .principle-box {
+    background: linear-gradient(135deg, #f5f0e8, #faf8f5);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 24px 0;
+  }
+  .principle-box h4 { margin-bottom:12px; color:var(--accent2); }
+  .principle-box p { font-size:0.9rem; color:var(--text2); margin-bottom:8px; }
+
+  /* Table */
+  .table-wrap { overflow-x:auto; margin:20px 0; }
+  table { width:100%; border-collapse:collapse; font-size:0.85rem; background:var(--card); box-shadow:var(--shadow); border-radius:12px; overflow:hidden; }
+  th { background:var(--accent2); color:#fff; padding:14px 12px; text-align:left; font-weight:600; white-space:nowrap; }
+  td { padding:12px; border-bottom:1px solid var(--border); vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+  tr:hover td { background:#faf8f5; }
+  .tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:600; }
+  .tag-best { background:#e8f5e9; color:#2e7d32; }
+  .tag-good { background:#e3f2fd; color:#1565c0; }
+  .tag-warn { background:#fff3e0; color:#e65100; }
+  .tag-close { background:#fce4ec; color:#c62828; }
+
+  @media print {
+    body { background:#fff; padding:0; }
+    .phase { break-inside:avoid; box-shadow:none; border:1px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🤖 AI 短剧制作系统学习计划</h1>
+<p class="subtitle">目标：3个月从零到独立产出2分钟AI短剧作品</p>
+
+<!-- ============ PLAN ============ -->
+<h2><span class="num">📋</span> 学习计划</h2>
+
+<h3>核心原则</h3>
+<div class="principle-box">
+  <h4>🎯 四个"不"</h4>
+  <p><strong>不只看不练</strong>——每学一个工具立即产出内容，哪怕10秒</p>
+  <p><strong>不求完美</strong>——第一部作品的目标是"做完"，不是"做好"</p>
+  <p><strong>不闭门造车</strong>——每周在社交平台发布练习片段，收集反馈</p>
+  <p><strong>不依赖单一工具</strong>——Seedance做主镜头，可灵补广度，海螺做批量，组合使用效率最高</p>
+</div>
+
+<!-- Phase 1 -->
+<div class="phase">
+  <div class="phase-header">
+    <span class="phase-title">第一阶段 · 工具上手</span>
+    <span class="phase-time">第1-3周 | 每天2-3小时</span>
+  </div>
+  <div class="phase-goal">🎯 目标：能用 AI 独立生成10秒以上的连贯画面</div>
+  <ul>
+    <li><strong>第1周：</strong>可灵 + 即梦入门 —— 文生视频、图生视频基础操作，理解提示词的画面控制逻辑。产出：每天5条10秒片段</li>
+    <li><strong>第2周：</strong>Seedance 2.0 —— 学习多模态参考控制（9图+3视频混合输入），掌握 Fast/Pro 模式切换策略。产出：2条15秒角色一致性片段</li>
+    <li><strong>第3周：</strong>ComfyUI 基础 —— 节点式工作流搭建，理解 ControlNet、IPAdapter 的角色一致性控制原理。产出：第一个简单工作流</li>
+    <li><strong>工具配置：</strong>可灵黄金会员（66元/月）+ 即梦基础版 + ComfyUI 本地安装</li>
+  </ul>
+</div>
+
+<!-- Phase 2 -->
+<div class="phase">
+  <div class="phase-header">
+    <span class="phase-title">第二阶段 · 短剧工作流</span>
+    <span class="phase-time">第4-7周 | 每天3-4小时</span>
+  </div>
+  <div class="phase-goal">🎯 目标：跑通"剧本→分镜→生成→后期"全流程</div>
+  <ul>
+    <li><strong>第4周：AI 剧本创作</strong> —— 用 ChatGPT/Claude 生成短剧大纲 → 人工注入真实素材改写冲突 → 拆分 30-40 镜分场脚本。重点：<em>AI写骨架，你填血肉</em></li>
+    <li><strong>第5周：AI 分镜设计</strong> —— ComfyUI 批量生成角色参考图 → ControlNet 固定构图 → 建立角色一致性工作流。产出：30张连贯分镜图</li>
+    <li><strong>第6周：批量视频生成</strong> —— 可灵批量生成大部分镜头 → Seedance 2.0 补充关键特写镜头 → 海螺快速试错。重点：<em>Fast模式试错，Pro模式定稿</em></li>
+    <li><strong>第7周：后期合成</strong> —— 剪映 AI 粗剪 → DaVinci Resolve 精调节奏和色调 → 魔音工坊 AI 配音 → 添加字幕和BGM。产出：第一部2分钟练习作</li>
+    <li><strong>工具升级：</strong>可灵铂金会员 + Seedance 2.0 按量付费 + 魔音工坊基础版</li>
+  </ul>
+</div>
+
+<!-- Phase 3 -->
+<div class="phase">
+  <div class="phase-header">
+    <span class="phase-title">第三阶段 · 出作品</span>
+    <span class="phase-time">第8-12周 | 每天4-5小时</span>
+  </div>
+  <div class="phase-goal">🎯 目标：产出一部可投递/可展示的作品级 AI 短剧</div>
+  <ul>
+    <li><strong>第8-9周：</strong>复盘第一部的问题（角色一致性？节奏？音频？）→ 优化工作流 → 设计第二部剧本（从你的真实拍摄经历中选材）</li>
+    <li><strong>第10-11周：</strong>全流程制作第二部 2 分钟短剧 —— 这次追求作品级质量。Seedance Pro 做主镜头，可灵 2.5 做过渡，手绘/实拍素材混入增加真实感</li>
+    <li><strong>第12周：</strong>后期精修 → 导出 → 发布抖音/B站/小红书 → 加入作品集网站 → 写制作复盘文章（面试用）</li>
+    <li><strong>工具升级：</strong>Seedance 2.0 Pro 模式 + 可灵黑金会员（如需高频量产）</li>
+  </ul>
+</div>
+
+<!-- Phase 4 -->
+<div class="phase">
+  <div class="phase-header">
+    <span class="phase-title">第四阶段 · 持续迭代</span>
+    <span class="phase-time">第13周起 | 持续</span>
+  </div>
+  <div class="phase-goal">🎯 目标：建立个人品牌和工作流资产</div>
+  <ul>
+    <li><strong>内容节奏：</strong>每周发布 1 条 AI 短剧/练习片段 → 月度出一部完整作品</li>
+    <li><strong>工作流沉淀：</strong>把成熟的 ComfyUI 工作流整理成模板 → 可复用的角色一致性"配方"</li>
+    <li><strong>技能拓展：</strong>学习 AI 实时视频（LivePortrait）→ AI+实拍混合（缝合模式）→ 探索互动短剧</li>
+    <li><strong>变现路径：</strong>AI 定制短剧接单 → 品牌AI短片 → 短剧平台签约 → 技术培训</li>
+  </ul>
+</div>
+
+<!-- Recommended tools -->
+<h3>🛠️ 推荐工具链总览</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>环节</th><th>主力工具</th><th>备用工具</th><th>说明</th></tr>
+  <tr><td>剧本</td><td>ChatGPT / Claude</td><td>DeepSeek</td><td>AI写骨架，你注入真实细节</td></tr>
+  <tr><td>分镜</td><td>ComfyUI + ControlNet</td><td>Midjourney</td><td>角色一致性是核心竞争力</td></tr>
+  <tr><td>视频生成</td><td>可灵 3.0 + Seedance 2.0</td><td>海螺 2.3</td><td>可灵做量，Seedance做质</td></tr>
+  <tr><td>配音</td><td>魔音工坊 / 剪映AI</td><td>ElevenLabs</td><td>中文配音魔音工坊最好</td></tr>
+  <tr><td>剪辑</td><td>DaVinci Resolve</td><td>剪映专业版</td><td>AI粗剪→人工精调</td></tr>
+  <tr><td>音乐</td><td>Epidemic Sound</td><td>网易云·音街</td><td>避免版权问题</td></tr>
+</table>
+</div>
+
+
+<!-- ============ MODEL COMPARISON ============ -->
+<h2 style="margin-top:60px;"><span class="num">📊</span> 主流AI视频生成大模型对比</h2>
+<p style="color:var(--text2); font-size:0.9rem; margin-bottom:24px;">数据截至 2026年6月，各模型更新频繁，价格以官方最新为准</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+  <tr>
+    <th>模型</th>
+    <th>开发方</th>
+    <th>最大时长</th>
+    <th>最高分辨率</th>
+    <th>原生音频</th>
+    <th>生成速度</th>
+    <th>5秒成本(¥)</th>
+    <th>核心优势</th>
+    <th>主要短板</th>
+    <th>推荐场景</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><strong>Seedance 2.0</strong></td>
+    <td>字节跳动</td>
+    <td>15秒</td>
+    <td>1080p</td>
+    <td>✅ 双声道</td>
+    <td>30-60秒</td>
+    <td>Fast ¥0.8<br>Pro ¥8.7</td>
+    <td><span class="tag tag-best">最强多模态控制</span><br>9图+3视频混合输入<br>角色一致性业界领先</td>
+    <td>单次最长仅15秒<br>无4K输出</td>
+    <td>🎬 关键特写镜头<br>需要精细控制的场景</td>
+  </tr>
+  <tr>
+    <td><strong>可灵 Kling 3.0</strong></td>
+    <td>快手</td>
+    <td><span class="tag tag-best">120秒</span></td>
+    <td>1080p/4K</td>
+    <td>✅ 5语种</td>
+    <td>~60秒</td>
+    <td>Turbo ¥2.8<br>Pro ¥4.5</td>
+    <td><span class="tag tag-best">中文理解最强</span><br>超长视频（2分钟连贯）<br>性价比极高</td>
+    <td>复杂手部动作偶残影<br>海外生态弱</td>
+    <td>🇨🇳 中文短剧批量生产<br>剧情内容主力引擎</td>
+  </tr>
+  <tr>
+    <td><strong>Runway Gen-4.5</strong></td>
+    <td>Runway</td>
+    <td>16秒</td>
+    <td>1080p</td>
+    <td>❌</td>
+    <td>20-60秒</td>
+    <td>订阅制<br>$12-95/月</td>
+    <td><span class="tag tag-best">可控性全球第一</span><br>运动笔刷、逐帧调整<br>最完整编辑工作流</td>
+    <td>学习曲线陡峭<br>价格较高</td>
+    <td>🎮 需要逐帧控制<br>专业影视后期</td>
+  </tr>
+  <tr>
+    <td><strong>Veo 3.1</strong></td>
+    <td>Google</td>
+    <td>8-30秒</td>
+    <td><span class="tag tag-best">4K</span></td>
+    <td><span class="tag tag-best">✅ 最强</span></td>
+    <td>~60秒</td>
+    <td>Fast ¥3.5<br>Pro ¥4.8</td>
+    <td>唯一4K输出<br>最强原生音频<br>电影级光影色彩</td>
+    <td>最长仅8秒<br>需Google生态</td>
+    <td>📺 4K高质量广告<br>YouTube内容</td>
+  </tr>
+  <tr>
+    <td><strong>Sora 2</strong></td>
+    <td>OpenAI</td>
+    <td>25秒</td>
+    <td>1080p</td>
+    <td>❌</td>
+    <td>~90秒</td>
+    <td>¥7-14</td>
+    <td>物理一致性最强<br>叙事构图有"导演意识"</td>
+    <td><span class="tag tag-close">2026.9关闭API</span><br>价格最高</td>
+    <td>⚠️ 不推荐新项目<br>建议迁移到Veo/Seedance</td>
+  </tr>
+  <tr>
+    <td><strong>海螺 Hailuo 2.3</strong></td>
+    <td>MiniMax</td>
+    <td>10秒</td>
+    <td>1080p</td>
+    <td>✅</td>
+    <td>~40秒</td>
+    <td>¥2.0</td>
+    <td><span class="tag tag-best">极致性价比</span><br>人像表现好<br>15种相机指令</td>
+    <td>复杂场景弱<br>音画不能同出</td>
+    <td>💰 批量试错<br>低成本快速迭代</td>
+  </tr>
+  <tr>
+    <td><strong>即梦 Jimeng</strong></td>
+    <td>字节跳动</td>
+    <td>取决于模式</td>
+    <td>1080p</td>
+    <td>✅</td>
+    <td>—</td>
+    <td>订阅制</td>
+    <td>低门槛、国内直连<br>与Seedance共享底层<br>模板丰富</td>
+    <td>非独立模型<br>专业可控性受限</td>
+    <td>🚪 新手入门<br>快速短视频创作</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>🎯 短剧制作推荐组合</h3>
+<div class="principle-box">
+  <h4>最佳性价比组合（月成本约 200-500元）</h4>
+  <p><strong>主力引擎：</strong>可灵 3.0（批量生成，中文理解好，120秒超长）</p>
+  <p><strong>关键镜头：</strong>Seedance 2.0 Fast（特写、角色一致性镜头，0.8元/5秒）</p>
+  <p><strong>快速试错：</strong>海螺 2.3（想法验证、低成本迭代，2元/5秒）</p>
+  <p><strong>会员策略：</strong>可灵铂金会员（¥258/月）+ Seedance按量付费 + 海螺按量</p>
+</div>
+
+<p style="text-align:center; color:var(--text2); margin-top:40px; font-size:0.85rem;">
+  📅 最后更新：2026年6月 · 建议每季度重新评估工具链
+</p>
+
+</div>
+</body>
+</html>
