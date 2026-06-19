@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>肖子宸 - 个人简历</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #2c2c2c;
+    --text2: #5c5c5c;
+    --accent: #c4a882;
+    --accent2: #a68b5c;
+    --border: #e8e0d5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'PingFang SC','Microsoft YaHei','Hiragino Sans GB',-apple-system,sans-serif;
+    color: var(--text);
+    background: #f5f0e8;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    line-height: 1.7;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--bg);
+    padding: 18mm 16mm;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; width: 100%; padding: 10mm 12mm; }
+    @page { size: A4; margin: 0; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .header h1 { font-size: 26px; font-weight: 700; letter-spacing: 6px; margin-bottom: 4px; }
+  .header .subtitle { font-size: 12px; color: var(--accent2); letter-spacing: 4px; margin-bottom: 10px; }
+  .header .contact { font-size: 10px; color: var(--text2); display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+
+  /* Section */
+  .section { margin-bottom: 12px; }
+  .section-title {
+    font-size: 13px; font-weight: 700; letter-spacing: 2px;
+    padding-bottom: 3px; border-bottom: 1px solid var(--border);
+    margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+  }
+  .section-title::before {
+    content: ''; display: inline-block; width: 6px; height: 6px;
+    background: var(--accent); border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* Timeline */
+  .item { margin-bottom: 8px; padding-left: 14px; border-left: 1px solid var(--border); position: relative; }
+  .item::before {
+    content: ''; position: absolute; left: -2.5px; top: 6px;
+    width: 4px; height: 4px; border-radius: 50%; background: var(--accent2);
+  }
+  .item .row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
+  .item h4 { font-size: 11px; font-weight: 600; }
+  .item .date { font-size: 9px; color: var(--accent2); }
+  .item .org { font-size: 10px; color: var(--text2); margin-bottom: 2px; }
+  .item p { font-size: 9.5px; color: var(--text2); line-height: 1.6; }
+
+  /* Skills */
+  .skill-row { display: flex; flex-wrap: wrap; gap: 6px 10px; font-size: 10px; margin-bottom: 6px; }
+  .skill-row .label { font-weight: 600; min-width: 50px; color: var(--text); }
+  .skill-row .val { color: var(--text2); }
+
+  /* Awards */
+  .award-list { font-size: 10px; color: var(--text2); padding-left: 16px; }
+  .award-list li { margin-bottom: 2px; }
+
+  /* Self eval */
+  .eval-text { font-size: 10px; color: var(--text2); line-height: 1.8; }
+
+  .edit-hint {
+    position: fixed; bottom: 16px; right: 16px;
+    background: var(--text); color: #fff; padding: 8px 16px;
+    border-radius: 20px; font-size: 11px; opacity: 0.5;
+  }
+  @media print { .edit-hint { display: none; } }
+</style>
+</head>
+<body>
+<div class="page" contenteditable="true">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>肖 子 宸</h1>
+    <div class="subtitle">新媒体运营 · 视频创作 · 直播主播</div>
+    <div class="contact">
+      <span>📧 3056353551@qq.com</span>
+      <span>📱 17870166190</span>
+      <span>📍 江西赣州</span>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="section">
+    <div class="section-title">教育经历</div>
+    <div class="item">
+      <div class="row"><h4>摄影专业 · 本科</h4><span class="date">2023.09 - 2027.06</span></div>
+      <div class="org">武昌工学院</div>
+      <p>主修课程：摄影构图、摄影艺术、人像摄影、产品摄影、广告摄影、后期制作、摄像技术、语言学概论、跨文化交际、中国文化概论</p>
+    </div>
+  </div>
+
+  <!-- Experience -->
+  <div class="section">
+    <div class="section-title">实习经历</div>
+
+    <div class="item">
+      <div class="row"><h4>后期剪辑 / 节目制作实习生</h4><span class="date">2025.12 - 2026.03</span></div>
+      <div class="org">湖南省广播电视台 · 金鹰卡通</div>
+      <p>负责《动物帮帮队》前期剧本撰写及后期视频精简制作，完成数十期节目成片；配合编导台本撰写、录制现场辅助，根据节目调性调整剪辑风格；参与2026《芒果童学艺术盛典》制作。</p>
+    </div>
+
+    <div class="item">
+      <div class="row"><h4>摄影助理 / 短视频助理</h4><span class="date">2025.06 - 2025.08</span></div>
+      <div class="org">武汉开讯众创传媒</div>
+      <p>负责广告业务及TikTok跨境电商视频拍摄与策划；负责公司账号内容拍摄，产出视频累计浏览量2500万。</p>
+    </div>
+
+    <div class="item">
+      <div class="row"><h4>摄影师 / 摄像师</h4><span class="date">2023.09 - 2025.10</span></div>
+      <div class="org">武汉壹雙摄影工作室</div>
+      <p>负责婚礼摄像主副机位拍摄、生日宴跟拍、研学活动跟拍；为知名婚礼堂拍摄宣传视频，社交媒体获10万+曝光。</p>
+    </div>
+
+    <div class="item">
+      <div class="row"><h4>视频剪辑（线上）</h4><span class="date">2024.07 - 2024.09</span></div>
+      <div class="org">众享云科技服务中心</div>
+      <p>参与短视频策划至出品全流程，累计完成50+条多类型视频（产品测评/教程/活动预热）；主导粗剪、精剪、包装、调色，按时交付率100%；参与前期脚本与分镜设计。</p>
+    </div>
+
+    <div class="item">
+      <div class="row"><h4>直播主播</h4><span class="date">2024.05 - 2024.10</span></div>
+      <div class="org">BT女装店铺</div>
+      <p>单场直播6小时、场均观看1w+，最高单日50单、流水6000元；独立负责直播内容策划与执行，具备用户洞察与实时素材提炼能力。</p>
+    </div>
+
+    <div class="item">
+      <div class="row"><h4>摄影师 / 后期剪辑</h4><span class="date">2024.11 - 2025.02</span></div>
+      <div class="org">武汉焉识传媒（校内大学生创业孵化基地）</div>
+      <p>负责校内图书馆宣传MV拍摄及诗朗诵拍摄；参与抖音达人孵化计划，校园宿舍生活类短视频拍摄、后期剪辑及文案撰写。</p>
+    </div>
+  </div>
+
+  <!-- Campus -->
+  <div class="section">
+    <div class="section-title">校园经历</div>
+
+    <div class="item">
+      <div class="row"><h4>融媒体宣传部 · 部长 & 视频剪辑</h4><span class="date">2023.10 - 至今</span></div>
+      <div class="org">武昌工学院</div>
+      <p>负责抖音与视频号两个校官号视频剪辑，累计制作90+条视频；首条视频浏览量点赞数1w+，为学校官方账号带来超160w流量增长。</p>
+    </div>
+
+    <div class="item">
+      <div class="row"><h4>大学公众号 · 主要负责人</h4><span class="date">2023.10 - 至今</span></div>
+      <div class="org">武昌工学院</div>
+      <p>主导/参与策划推文60+篇，累计阅读量突破10w+；独立负责选题、采编、排版、发布及数据分析全流程。</p>
+    </div>
+  </div>
+
+  <!-- Skills -->
+  <div class="section">
+    <div class="section-title">技能证书</div>
+    <div class="skill-row"><span class="label">语言</span><span class="val">普通话二级甲等 · 大学英语四级（CET-4）</span></div>
+    <div class="skill-row"><span class="label">拍摄</span><span class="val">婚礼/活动摄影摄像 · 直播间搭建 · 产品/广告摄影</span></div>
+    <div class="skill-row"><span class="label">后期</span><span class="val">Premiere Pro · DaVinci Resolve · 剪映 · 醒图 · PS</span></div>
+    <div class="skill-row"><span class="label">内容</span><span class="val">短视频策划 · 脚本撰写 · 直播运营 · 公众号运营 · AI工具</span></div>
+    <div class="skill-row"><span class="label">数据</span><span class="val">Excel（VLOOKUP/数据透视表） · 八爪鱼采集器 · 秀米编辑器</span></div>
+  </div>
+
+  <!-- Awards -->
+  <div class="section">
+    <div class="section-title">荣誉奖项</div>
+    <ul class="award-list">
+      <li>全国大学生语言文字大赛 · 国家二等奖</li>
+      <li>2023全国大学生英语翻译大赛 · 省级三等奖</li>
+      <li>学院第八届读书节征文比赛 · 三等奖</li>
+    </ul>
+  </div>
+
+  <!-- Self eval -->
+  <div class="section">
+    <div class="section-title">自我评价</div>
+    <p class="eval-text">深度融入新生代文化、熟悉网络传播语境的新媒体人。具备出色的内容感知力和用户共情能力，能精准把握当下传播节奏。拥有直播、短视频、图文创作的全链路实践经验，擅长通过清晰沟通理解团队目标，主动提供建设性意见。工作严谨负责，追求效率与细节平衡，始终以提升内容质量和传播效果为导向。</p>
+  </div>
+
+</div>
+
+<div class="edit-hint">💡 文字可直接点击编辑，改完后 Ctrl+P → 另存为PDF</div>
+</body>
+</html>
