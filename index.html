@@ -139,7 +139,7 @@
             position: relative;
             padding: 120px 24px 80px;
             overflow: hidden;
-            background: var(--bg-primary);
+            background: linear-gradient(135deg, #f5f0e8 0%, #faf8f5 30%, #f8f3ea 60%, #faf8f5 100%);
         }
 
         .hero::before {
@@ -153,6 +153,22 @@
             -webkit-mask-image: linear-gradient(to right, black 0%, black 50%, transparent 100%);
             mask-image: linear-gradient(to right, black 0%, black 50%, transparent 100%);
             pointer-events: none;
+        }
+
+        .hero-bg-deco {
+            position: absolute;
+            right: -5%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: clamp(5rem, 12vw, 9rem);
+            font-weight: 900;
+            color: rgba(196, 168, 130, 0.08);
+            letter-spacing: 16px;
+            white-space: nowrap;
+            pointer-events: none;
+            user-select: none;
+            line-height: 1.1;
+            text-align: right;
         }
 
         .hero-content {
@@ -969,6 +985,7 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-bg-deco">PHOTO<br>GRAPHY</div>
         <div class="hero-content">
             <div class="hero-avatar">
                 <span>📷</span>
