@@ -203,6 +203,27 @@
 
 </div>
 
-<div class="edit-hint">💡 文字可直接点击编辑，改完后 Ctrl+P → 另存为PDF</div>
+<div class="edit-hint" id="saveHint">💡 编辑中... 改动自动保存</div>
+<script>
+  const page = document.querySelector('.page');
+  const hint = document.getElementById('saveHint');
+
+  // 恢复上次保存的内容
+  const saved = localStorage.getItem('resume-v2');
+  if (saved) {
+    page.innerHTML = saved;
+  }
+
+  // 监听改动，自动保存
+  let saveTimer;
+  page.addEventListener('input', () => {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      localStorage.setItem('resume-v2', page.innerHTML);
+      hint.textContent = '✅ 已自动保存 ' + new Date().toLocaleTimeString();
+      setTimeout(() => { hint.textContent = '💡 编辑中... 改动自动保存'; }, 2000);
+    }, 500);
+  });
+</script>
 </body>
 </html>
