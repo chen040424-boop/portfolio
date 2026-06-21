@@ -377,6 +377,60 @@
             margin-top: 16px;
         }
 
+        /* ========== Advantages ========== */
+        .advantage-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .advantage-item {
+            display: flex;
+            gap: 20px;
+            padding: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .advantage-item:hover {
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .adv-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+        }
+
+        .advantage-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        .advantage-item p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .advantage-item {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
         /* ========== About ========== */
         .about-grid {
             display: grid;
@@ -1189,7 +1243,52 @@
     <!-- About Section -->
     <section class="section" id="about">
         <div class="section-inner">
-            <p class="section-label">06 / 关于我</p>
+            <p class="section-label">06 / 个人优势</p>
+            <h2 class="section-title">核心优势</h2>
+            <div class="advantage-list fade-in">
+                <div class="advantage-item">
+                    <span class="adv-icon">🎬</span>
+                    <div>
+                        <h4>全链路内容创作能力</h4>
+                        <p>从前期策划、脚本撰写、实地拍摄到后期剪辑、调色包装，一人可跑通短视频/直播/节目制作全流程。累计产出视频100+条，涵盖婚礼纪实、产品广告、抖音达人、电视节目等多类型。</p>
+                    </div>
+                </div>
+                <div class="advantage-item">
+                    <span class="adv-icon">📊</span>
+                    <div>
+                        <h4>数据验证的传播实力</h4>
+                        <p>作品累计浏览量超2500万，为校园官号带来160万+流量增长，推文阅读量突破10万+，直播场均观看1万+。用数据说话，深刻理解内容传播逻辑与用户心理。</p>
+                    </div>
+                </div>
+                <div class="advantage-item">
+                    <span class="adv-icon">📷</span>
+                    <div>
+                        <h4>专业摄影基底 + 商业变现思维</h4>
+                        <p>2年婚礼/活动实拍经验，服务超80组客户；具备单场直播流水6000元的商业转化能力。不止会拍，更懂如何用影像创造价值。</p>
+                    </div>
+                </div>
+                <div class="advantage-item">
+                    <span class="adv-icon">🔧</span>
+                    <div>
+                        <h4>多平台多工具熟练驾驭</h4>
+                        <p>精通抖音、TikTok、视频号等主流平台的内容打法，熟练操作 Premiere Pro、DaVinci Resolve、剪映、Photoshop 等专业工具，以及 Excel 数据分析与八爪鱼数据采集。</p>
+                    </div>
+                </div>
+                <div class="advantage-item">
+                    <span class="adv-icon">🤝</span>
+                    <div>
+                        <h4>团队协作与项目统筹</h4>
+                        <p>担任校园融媒体部长，带领团队统筹策划与执行；跨部门协作经验丰富，在金鹰卡通节目组配合编导、录制、后期全链路，具备项目管理的全局视野。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-inner">
+            <p class="section-label">07 / 关于我</p>
             <h2 class="section-title">关于肖子宸</h2>
             <div class="about-grid">
                 <div class="about-text fade-in">
