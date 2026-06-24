@@ -1411,8 +1411,8 @@
                 { src: '建筑摄影/c7961d74cf250d0845f34105da784e2.jpg', title: '建筑摄影 · 伍' },
             ],
             '节目作品': [
-                { src: 'https://picsum.photos/seed/maizha/800/600', title: '麦咭动物城', link: 'https://www.mgtv.com/b/854539/24236755.html', desc: '后期剪辑 · 金鹰卡通' },
-                { src: 'https://picsum.photos/seed/maiji/800/600', title: '麦咭帮帮队', link: 'https://www.mgtv.com/b/820455/23951228.html', desc: '后期剪辑 · 金鹰卡通' },
+                { src: 'images/麦咭动物城.jpg', title: '麦咭动物城', link: 'https://www.mgtv.com/b/854539/24236755.html', desc: '后期剪辑 · 金鹰卡通' },
+                { src: 'images/麦咭帮帮队.jpg', title: '麦咭帮帮队', link: 'https://www.mgtv.com/b/820455/23951228.html', desc: '后期剪辑 · 金鹰卡通' },
             ],
         };
 
@@ -1444,7 +1444,7 @@
                     div.dataset.link = item.link;
                     div.style.cursor = 'pointer';
                     div.innerHTML = `
-                        <img src="${item.src}"
+                        <img src="${encodeURI(item.src)}"
                              alt="${item.title}"
                              loading="lazy"
                              onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
