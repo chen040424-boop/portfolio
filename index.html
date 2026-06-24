@@ -1198,6 +1198,12 @@
                 <h3 class="category-title">🏛️ 建筑摄影</h3>
                 <div class="gallery-scroll" id="scroll-建筑摄影"></div>
             </div>
+
+            <!-- 节目作品 -->
+            <div class="gallery-category fade-in">
+                <h3 class="category-title">📺 节目作品</h3>
+                <div class="gallery-scroll" id="scroll-节目作品"></div>
+            </div>
         </div>
     </section>
 
@@ -1404,6 +1410,10 @@
                 { src: '建筑摄影/9a879c1c70da82f4a595873b552f95e.jpg', title: '建筑摄影 · 肆' },
                 { src: '建筑摄影/c7961d74cf250d0845f34105da784e2.jpg', title: '建筑摄影 · 伍' },
             ],
+            '节目作品': [
+                { src: 'https://picsum.photos/seed/maizha/800/600', title: '麦咭动物城', link: 'https://www.mgtv.com/b/854539/24236755.html', desc: '后期剪辑 · 金鹰卡通' },
+                { src: 'https://picsum.photos/seed/maiji/800/600', title: '麦咭帮帮队', link: 'https://www.mgtv.com/b/820455/23951228.html', desc: '后期剪辑 · 金鹰卡通' },
+            ],
         };
 
         // Populate gallery scroll containers
@@ -1428,6 +1438,23 @@
                         <div class="gallery-overlay">
                             <h4>${item.title}</h4>
                             <p>视频作品 · 点击播放</p>
+                        </div>`;
+                } else if (item.link) {
+                    div.dataset.type = 'link';
+                    div.dataset.link = item.link;
+                    div.style.cursor = 'pointer';
+                    div.innerHTML = `
+                        <img src="${item.src}"
+                             alt="${item.title}"
+                             loading="lazy"
+                             onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
+                        <div class="gallery-placeholder" style="display:none;">
+                            <div class="icon">📺</div>
+                            <div class="label">${item.title}</div>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h4>${item.title}</h4>
+                            <p>${item.desc} · 点击观看</p>
                         </div>`;
                 } else {
                     div.innerHTML = `
@@ -1527,6 +1554,10 @@
         document.getElementById('portfolio').addEventListener('click', (e) => {
             const item = e.target.closest('.gallery-item');
             if (!item) return;
+            if (item.dataset.type === 'link' && item.dataset.link) {
+                window.open(item.dataset.link, '_blank');
+                return;
+            }
             const items = Array.from(allGalleryItems());
             const index = items.indexOf(item);
             if (index >= 0) openLightbox(index);
