@@ -1169,6 +1169,12 @@
             <p class="section-label">04 / 作品展示</p>
             <h2 class="section-title">摄影作品集</h2>
 
+            <!-- 节目作品 -->
+            <div class="gallery-category fade-in">
+                <h3 class="category-title">📺 节目作品</h3>
+                <div class="gallery-scroll" id="scroll-节目作品"></div>
+            </div>
+
             <!-- 视频作品 -->
             <div class="gallery-category fade-in">
                 <h3 class="category-title">🎬 视频作品</h3>
@@ -1199,11 +1205,6 @@
                 <div class="gallery-scroll" id="scroll-建筑摄影"></div>
             </div>
 
-            <!-- 节目作品 -->
-            <div class="gallery-category fade-in">
-                <h3 class="category-title">📺 节目作品</h3>
-                <div class="gallery-scroll" id="scroll-节目作品"></div>
-            </div>
         </div>
     </section>
 
@@ -1350,6 +1351,10 @@
         const basePath = 'images/';
 
         const galleryData = {
+            '节目作品': [
+                { src: 'images/麦咭动物城.jpg', title: '麦咭动物城', link: 'https://www.mgtv.com/b/854539/24236755.html', desc: '后期剪辑 · 金鹰卡通' },
+                { src: 'images/麦咭帮帮队.jpg', title: '麦咭帮帮队', link: 'https://www.mgtv.com/b/820455/23951228.html', desc: '后期剪辑 · 金鹰卡通' },
+            ],
             'video': [
                 { src: 'videos/videosmv-showcase.mp4.mp4', title: 'MV 拍摄展示', isVideo: true },
                 { src: 'videos/videoswedding-showcase.mp4.mp4', title: '婚礼摄像展示', isVideo: true },
@@ -1409,10 +1414,6 @@
                 { src: '建筑摄影/48c9de9cda9f09af3641ffdbbe31081.jpg', title: '建筑摄影 · 叁' },
                 { src: '建筑摄影/9a879c1c70da82f4a595873b552f95e.jpg', title: '建筑摄影 · 肆' },
                 { src: '建筑摄影/c7961d74cf250d0845f34105da784e2.jpg', title: '建筑摄影 · 伍' },
-            ],
-            '节目作品': [
-                { src: 'images/麦咭动物城.jpg', title: '麦咭动物城', link: 'https://www.mgtv.com/b/854539/24236755.html', desc: '后期剪辑 · 金鹰卡通' },
-                { src: 'images/麦咭帮帮队.jpg', title: '麦咭帮帮队', link: 'https://www.mgtv.com/b/820455/23951228.html', desc: '后期剪辑 · 金鹰卡通' },
             ],
         };
 
