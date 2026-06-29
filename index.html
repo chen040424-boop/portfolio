@@ -867,11 +867,11 @@
             border-radius: var(--radius);
             padding: 32px;
             display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 32px;
+            grid-template-columns: 160px 80px 1fr;
+            gap: 20px;
             transition: var(--transition);
             box-shadow: var(--shadow);
-            position: relative;
+            align-items: start;
         }
 
         .exp-card:hover {
@@ -883,14 +883,22 @@
             font-size: 0.8rem;
             letter-spacing: 1px;
             color: var(--accent);
-            display: flex;
-            flex-direction: column;
+            padding-top: 2px;
         }
 
-        .exp-date p {
-            margin: 0;
-            color: inherit;
-            font-size: inherit;
+        .exp-icon {
+            width: 80px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .exp-icon img {
+            width: 70px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            opacity: 0.9;
         }
 
         .exp-info h3 {
@@ -905,19 +913,20 @@
             margin-bottom: 12px;
         }
 
-        .exp-logo {
-            width: 90px;
-            height: auto;
-            object-fit: contain;
-            border-radius: 8px;
-            margin-top: 16px;
-            opacity: 0.9;
-        }
-
         .exp-info p {
             color: var(--text-secondary);
             font-size: 0.9rem;
             line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .exp-card {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .exp-icon {
+                display: none;
+            }
         }
 
         /* ========== Contact ========== */
@@ -1012,11 +1021,6 @@
             .about-grid {
                 grid-template-columns: 1fr;
                 gap: 32px;
-            }
-
-            .exp-card {
-                grid-template-columns: 1fr;
-                gap: 8px;
             }
 
             .gallery {
@@ -1116,6 +1120,7 @@
             <div class="exp-grid">
                 <div class="exp-card fade-in">
                     <div class="exp-date">2023.09 - 2025.10</div>
+                    <div class="exp-icon"></div>
                     <div class="exp-info">
                         <h3>摄影师 / 摄像师</h3>
                         <div class="org">武汉壹雙摄影工作室</div>
@@ -1124,6 +1129,7 @@
                 </div>
                 <div class="exp-card fade-in">
                     <div class="exp-date">2024.11 - 2025.02</div>
+                    <div class="exp-icon"></div>
                     <div class="exp-info">
                         <h3>摄影师 / 后期剪辑</h3>
                         <div class="org">武汉焉识传媒（校内大学生创业孵化基地）</div>
@@ -1132,6 +1138,7 @@
                 </div>
                 <div class="exp-card fade-in">
                     <div class="exp-date">2025.06 - 2025.08</div>
+                    <div class="exp-icon"></div>
                     <div class="exp-info">
                         <h3>摄影助理 / 短视频助理</h3>
                         <div class="org">武汉开讯众创传媒</div>
@@ -1139,10 +1146,8 @@
                     </div>
                 </div>
                 <div class="exp-card fade-in">
-                    <div class="exp-date">
-                        <p>2025.12 - 2026.05</p>
-                        <img src="实习经历/金鹰卡通图标.jpg" class="exp-logo" alt="金鹰卡通">
-                    </div>
+                    <div class="exp-date">2025.12 - 2026.05</div>
+                    <div class="exp-icon"><img src="实习经历/金鹰卡通图标.jpg" alt="金鹰卡通"></div>
                     <div class="exp-info">
                         <h3>后期剪辑 / 节目制作实习生 / 实习导演</h3>
                         <div class="org">湖南广播电视台 · 金鹰卡通卫视</div>
