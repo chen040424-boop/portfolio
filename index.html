@@ -916,13 +916,12 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 24px;
-            display: flex;
-            gap: 24px;
+            padding: 32px;
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 32px;
             transition: var(--transition);
             box-shadow: var(--shadow);
-            align-items: stretch;
-            min-height: 220px;
         }
 
         .exp-card:hover {
@@ -930,65 +929,25 @@
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
-        .exp-photo {
-            width: 160px;
-            flex-shrink: 0;
-            border-radius: 8px;
-            overflow: hidden;
-            background: var(--bg-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .exp-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .exp-photo .exp-photo-placeholder {
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            text-align: center;
-            padding: 16px;
-        }
-
-        .exp-body {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 6px;
-            flex-wrap: wrap;
-        }
-
-        .exp-header h3 {
-            font-size: 1.15rem;
-            letter-spacing: 1px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
         .exp-date {
             font-size: 0.8rem;
             letter-spacing: 1px;
             color: var(--accent);
-            white-space: nowrap;
         }
 
-        .exp-body .org {
+        .exp-info h3 {
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .exp-info .org {
             color: var(--text-muted);
             font-size: 0.9rem;
             margin-bottom: 12px;
         }
 
-        .exp-body p {
+        .exp-info p {
             color: var(--text-secondary);
             font-size: 0.9rem;
             line-height: 1.7;
@@ -996,12 +955,8 @@
 
         @media (max-width: 768px) {
             .exp-card {
-                flex-direction: column;
-                min-height: auto;
-            }
-            .exp-photo {
-                width: 100%;
-                height: 160px;
+                grid-template-columns: 1fr;
+                gap: 8px;
             }
         }
 
@@ -1097,11 +1052,6 @@
             .about-grid {
                 grid-template-columns: 1fr;
                 gap: 32px;
-            }
-
-            .exp-card {
-                grid-template-columns: 1fr;
-                gap: 8px;
             }
 
             .gallery {
@@ -1200,53 +1150,33 @@
             <h2 class="section-title">实习与项目经历</h2>
             <div class="exp-grid">
                 <div class="exp-card fade-in">
-                    <div class="exp-photo">
-                        <div class="exp-photo-placeholder">📷<br>壹雙摄影</div>
-                    </div>
-                    <div class="exp-body">
-                        <div class="exp-header">
-                            <h3>摄影师 / 摄像师</h3>
-                            <span class="exp-date">2023.09 - 2025.10</span>
-                        </div>
+                    <div class="exp-date">2023.09 - 2025.10</div>
+                    <div class="exp-info">
+                        <h3>摄影师 / 摄像师</h3>
                         <div class="org">武汉壹雙摄影工作室</div>
                         <p>负责婚礼摄像主副机位拍摄、生日宴跟拍、中小学生研学活动跟拍；协助工作室为知名婚礼堂拍摄宣传视频，作品在社交媒体获得10万+曝光</p>
                     </div>
                 </div>
                 <div class="exp-card fade-in">
-                    <div class="exp-photo">
-                        <div class="exp-photo-placeholder">🎬<br>焉识传媒</div>
-                    </div>
-                    <div class="exp-body">
-                        <div class="exp-header">
-                            <h3>摄影师 / 后期剪辑</h3>
-                            <span class="exp-date">2024.11 - 2025.02</span>
-                        </div>
+                    <div class="exp-date">2024.11 - 2025.02</div>
+                    <div class="exp-info">
+                        <h3>摄影师 / 后期剪辑</h3>
                         <div class="org">武汉焉识传媒（校内大学生创业孵化基地）</div>
                         <p>负责校内图书馆宣传MV拍摄及诗朗诵拍摄；参与校内抖音达人孵化计划，校园宿舍生活类短视频拍摄、后期剪辑及文案撰写</p>
                     </div>
                 </div>
                 <div class="exp-card fade-in">
-                    <div class="exp-photo">
-                        <div class="exp-photo-placeholder">📱<br>开讯众创</div>
-                    </div>
-                    <div class="exp-body">
-                        <div class="exp-header">
-                            <h3>摄影助理 / 短视频助理</h3>
-                            <span class="exp-date">2025.06 - 2025.08</span>
-                        </div>
+                    <div class="exp-date">2025.06 - 2025.08</div>
+                    <div class="exp-info">
+                        <h3>摄影助理 / 短视频助理</h3>
                         <div class="org">武汉开讯众创传媒</div>
                         <p>负责公司广告业务及TikTok跨境电商视频拍摄与策划；负责公司账号内容拍摄，产出视频累计浏览量2500万</p>
                     </div>
                 </div>
                 <div class="exp-card fade-in">
-                    <div class="exp-photo">
-                        <img src="实习经历/jykt.jpg" alt="金鹰卡通录制现场">
-                    </div>
-                    <div class="exp-body">
-                        <div class="exp-header">
-                            <h3>后期剪辑 / 节目制作实习生 / 实习导演</h3>
-                            <span class="exp-date">2025.12 - 2026.05</span>
-                        </div>
+                    <div class="exp-date">2025.12 - 2026.05</div>
+                    <div class="exp-info">
+                        <h3>后期剪辑 / 节目制作实习生 / 实习导演</h3>
                         <div class="org">湖南广播电视台 · 金鹰卡通卫视</div>
                         <p>参与金鹰卡通《麦咭帮帮队》《麦咭动物城》两档少儿节目制作，独立负责后期精剪，累计完成数十期节目成片；参与台本撰写与现场录制；加入2026《芒果童学艺术盛典》现场组及道具组</p>
                     </div>
