@@ -685,30 +685,20 @@
             aspect-ratio: 3 / 4;
         }
 
-        /* 婚礼摄影按各自原图比例 */
-        #scroll-婚礼摄影 .gallery-item,
-        #scroll-校园写真 .gallery-item,
-        #scroll-日系人像 .gallery-item,
-        #scroll-人像街拍 .gallery-item,
-        #scroll-探店街拍 .gallery-item,
-        #scroll-日常氛围 .gallery-item,
-        #scroll-产品人像 .gallery-item {
+        /* 婚礼/人像按各自原图比例 */
+        .gallery-scroll.natural .gallery-item {
             flex: 0 0 auto;
             width: auto;
             height: 280px;
             aspect-ratio: auto;
+            flex-shrink: 0;
         }
 
-        #scroll-婚礼摄影 .gallery-item img,
-        #scroll-校园写真 .gallery-item img,
-        #scroll-日系人像 .gallery-item img,
-        #scroll-人像街拍 .gallery-item img,
-        #scroll-探店街拍 .gallery-item img,
-        #scroll-日常氛围 .gallery-item img,
-        #scroll-产品人像 .gallery-item img {
+        .gallery-scroll.natural .gallery-item img {
             width: auto;
             height: 100%;
             object-fit: contain;
+            max-width: none;
         }
 
         @media (max-width: 768px) {
@@ -1288,7 +1278,7 @@
             <!-- 婚礼摄影作品 -->
             <div class="gallery-category fade-in">
                 <h3 class="category-title">💒 婚礼摄影作品</h3>
-                <div class="gallery-scroll" id="scroll-婚礼摄影"></div>
+                <div class="gallery-scroll" id="scroll-婚礼摄影" class="natural"></div>
             </div>
 
             <!-- 人像摄影作品（可展开） -->
@@ -1299,27 +1289,27 @@
                 <div class="video-panel" id="portraitPanel">
                     <div class="video-sub">
                         <h4 class="video-sub-title">🎓 校园写真</h4>
-                        <div class="gallery-scroll" id="scroll-校园写真"></div>
+                        <div class="gallery-scroll" id="scroll-校园写真" class="natural"></div>
                     </div>
                     <div class="video-sub">
                         <h4 class="video-sub-title">🌸 日系人像</h4>
-                        <div class="gallery-scroll" id="scroll-日系人像"></div>
+                        <div class="gallery-scroll" id="scroll-日系人像" class="natural"></div>
                     </div>
                     <div class="video-sub">
                         <h4 class="video-sub-title">🚶 人像街拍</h4>
-                        <div class="gallery-scroll" id="scroll-人像街拍"></div>
+                        <div class="gallery-scroll" id="scroll-人像街拍" class="natural"></div>
                     </div>
                     <div class="video-sub">
                         <h4 class="video-sub-title">🏪 探店街拍</h4>
-                        <div class="gallery-scroll" id="scroll-探店街拍"></div>
+                        <div class="gallery-scroll" id="scroll-探店街拍" class="natural"></div>
                     </div>
                     <div class="video-sub">
                         <h4 class="video-sub-title">🌿 日常氛围</h4>
-                        <div class="gallery-scroll" id="scroll-日常氛围"></div>
+                        <div class="gallery-scroll" id="scroll-日常氛围" class="natural"></div>
                     </div>
                     <div class="video-sub">
                         <h4 class="video-sub-title">📷 产品人像</h4>
-                        <div class="gallery-scroll" id="scroll-产品人像"></div>
+                        <div class="gallery-scroll" id="scroll-产品人像" class="natural"></div>
                     </div>
                 </div>
             </div>
