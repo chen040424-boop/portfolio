@@ -1307,11 +1307,12 @@
                 <div class="gallery-scroll" id="scroll-节目作品"></div>
             </div>
 
-            <!-- 视频专区（可展开） -->
+            <!-- 封面图合集（可展开） -->
             <div class="gallery-category fade-in">
                 <h3 class="category-title video-toggle" id="videoToggle">
-                    🎬 视频专区（展开查看）<span class="toggle-arrow"> ▸</span>
+                    🎬 封面图合集 <span class="toggle-hint">（展开视频专区）</span><span class="toggle-arrow"> ▸</span>
                 </h3>
+                <div class="gallery-scroll" id="scroll-covers"></div>
                 <div class="video-panel" id="videoPanel">
                     <div class="video-sub">
                         <h4 class="video-sub-title">🎬 MV 作品</h4>
@@ -1499,6 +1500,15 @@
                 { src: 'images/麦咭动物城.jpg', title: '麦咭动物城', link: 'https://www.mgtv.com/b/854539/24236755.html', desc: '后期剪辑 · 金鹰卡通' },
                 { src: 'images/麦咭帮帮队.jpg', title: '麦咭帮帮队', link: 'https://www.mgtv.com/b/820455/23951228.html', desc: '后期剪辑 · 金鹰卡通' },
             ],
+            'covers': [
+                { src: 'videos/mv-封面.jpg', title: '校图书馆音乐MV', isVideo: true, videoSrc: 'videos/校图书馆音乐MV.mp4' },
+                { src: 'videos/片花1-封面.jpg', title: '片花 ①', isVideo: true, videoSrc: 'videos/婚礼摄像3分钟片花 (1).mp4' },
+                { src: 'videos/片花2-封面.jpg', title: '片花 ②', isVideo: true, videoSrc: 'videos/婚礼摄像3分钟片花 (2).mp4' },
+                { src: 'videos/快剪1-封面.jpg', title: '快剪 ①', isVideo: true, videoSrc: 'videos/婚礼摄像快剪 (1).mp4' },
+                { src: 'videos/快剪2-封面.jpg', title: '快剪 ②', isVideo: true, videoSrc: 'videos/婚礼摄像快剪 (2).mp4' },
+                { src: 'videos/快剪3-封面.jpg', title: '快剪 ③', isVideo: true, videoSrc: 'videos/婚礼摄像快剪 (3).mp4' },
+                { src: 'videos/快剪4-封面.jpg', title: '快剪 ④', isVideo: true, videoSrc: 'videos/婚礼摄像快剪 (4).mp4' },
+            ],
             'mv': [
                 { src: 'videos/校图书馆音乐MV.mp4', poster: 'videos/mv-封面.jpg', title: '校图书馆音乐MV', isVideo: true },
             ],
@@ -1581,8 +1591,8 @@
                 div.dataset.index = idx;
                 if (item.isVideo) {
                     div.dataset.type = 'video';
-                    div.dataset.videoSrc = item.src;
-                    const posterUrl = item.poster ? encodeURI(item.poster) : '';
+                    div.dataset.videoSrc = item.videoSrc || item.src;
+                    const posterUrl = item.poster ? encodeURI(item.poster) : encodeURI(item.src);
                     div.innerHTML = `
                         <img src="${posterUrl}"
                              alt="${item.title}"
