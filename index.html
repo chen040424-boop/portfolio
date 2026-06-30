@@ -1500,17 +1500,17 @@
                 { src: 'images/麦咭帮帮队.jpg', title: '麦咭帮帮队', link: 'https://www.mgtv.com/b/820455/23951228.html', desc: '后期剪辑 · 金鹰卡通' },
             ],
             'mv': [
-                { src: 'videos/校图书馆音乐MV.mp4', title: '校图书馆音乐MV', isVideo: true },
+                { src: 'videos/校图书馆音乐MV.mp4', poster: 'videos/mv-封面.jpg', title: '校图书馆音乐MV', isVideo: true },
             ],
             '片花': [
-                { src: 'videos/婚礼摄像3分钟片花 (1).mp4', title: '片花 ①', isVideo: true },
-                { src: 'videos/婚礼摄像3分钟片花 (2).mp4', title: '片花 ②', isVideo: true },
+                { src: 'videos/婚礼摄像3分钟片花 (1).mp4', poster: 'videos/片花1-封面.jpg', title: '片花 ①', isVideo: true },
+                { src: 'videos/婚礼摄像3分钟片花 (2).mp4', poster: 'videos/片花2-封面.jpg', title: '片花 ②', isVideo: true },
             ],
             '快剪': [
-                { src: 'videos/婚礼摄像快剪 (1).mp4', title: '快剪 ①', isVideo: true },
-                { src: 'videos/婚礼摄像快剪 (2).mp4', title: '快剪 ②', isVideo: true },
-                { src: 'videos/婚礼摄像快剪 (3).mp4', title: '快剪 ③', isVideo: true },
-                { src: 'videos/婚礼摄像快剪 (4).mp4', title: '快剪 ④', isVideo: true },
+                { src: 'videos/婚礼摄像快剪 (1).mp4', poster: 'videos/快剪1-封面.jpg', title: '快剪 ①', isVideo: true },
+                { src: 'videos/婚礼摄像快剪 (2).mp4', poster: 'videos/快剪2-封面.jpg', title: '快剪 ②', isVideo: true },
+                { src: 'videos/婚礼摄像快剪 (3).mp4', poster: 'videos/快剪3-封面.jpg', title: '快剪 ③', isVideo: true },
+                { src: 'videos/婚礼摄像快剪 (4).mp4', poster: 'videos/快剪4-封面.jpg', title: '快剪 ④', isVideo: true },
             ],
             '产品人像': [
                 { src: '产品人像/1.jpg', title: '产品人像 · 壹' },
@@ -1581,17 +1581,21 @@
                 div.dataset.index = idx;
                 if (item.isVideo) {
                     div.dataset.type = 'video';
+                    div.dataset.videoSrc = item.src;
+                    const posterUrl = item.poster ? encodeURI(item.poster) : '';
                     div.innerHTML = `
-                        <video src="${encodeURI(item.src)}"
-                               preload="metadata" muted loop playsinline
-                               style="width:100%;height:100%;object-fit:cover;"></video>
+                        <img src="${posterUrl}"
+                             alt="${item.title}"
+                             loading="lazy"
+                             style="width:100%;height:100%;object-fit:cover;"
+                             onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
                         <div class="gallery-placeholder" style="display:none;">
                             <div class="icon">🎬</div>
                             <div class="label">${item.title}</div>
                         </div>
                         <div class="gallery-overlay">
                             <h4>${item.title}</h4>
-                            <p>视频作品 · 点击播放</p>
+                            <p>▶ 点击播放</p>
                         </div>`;
                 } else if (item.link) {
                     div.dataset.type = 'link';
@@ -1684,9 +1688,10 @@
             if (existingVideo) existingVideo.remove();
             lightboxImg.style.display = 'none';
 
-            if (video && video.src && item.dataset.type === 'video') {
+            const videoSrc = item.dataset.videoSrc || (video ? video.src : '');
+            if (videoSrc && item.dataset.type === 'video') {
                 const lbVideo = document.createElement('video');
-                lbVideo.src = video.src;
+                lbVideo.src = videoSrc;
                 lbVideo.controls = true;
                 lbVideo.autoplay = true;
                 lbVideo.className = 'lightbox-video';
