@@ -604,6 +604,51 @@
             color: var(--text-primary);
         }
 
+        .video-toggle {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .video-toggle:hover {
+            color: var(--accent-dark);
+        }
+
+        .toggle-arrow {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .toggle-arrow.open {
+            transform: rotate(90deg);
+        }
+
+        .video-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .video-panel.open {
+            max-height: 1200px;
+        }
+
+        .video-sub {
+            margin-bottom: 24px;
+        }
+
+        .video-sub-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            padding-left: 8px;
+            border-left: 3px solid var(--accent);
+        }
+
         .gallery-scroll {
             display: flex;
             gap: 14px;
@@ -1256,22 +1301,25 @@
                 <div class="gallery-scroll" id="scroll-节目作品"></div>
             </div>
 
-            <!-- MV 作品 -->
+            <!-- 视频专区（可展开） -->
             <div class="gallery-category fade-in">
-                <h3 class="category-title">🎬 MV 作品</h3>
-                <div class="gallery-scroll" id="scroll-mv"></div>
-            </div>
-
-            <!-- 婚礼摄像 · 3分钟片花 -->
-            <div class="gallery-category fade-in">
-                <h3 class="category-title">🎞️ 婚礼摄像 · 3分钟片花</h3>
-                <div class="gallery-scroll" id="scroll-片花"></div>
-            </div>
-
-            <!-- 婚礼摄像 · 快剪 -->
-            <div class="gallery-category fade-in">
-                <h3 class="category-title">⚡ 婚礼摄像 · 快剪</h3>
-                <div class="gallery-scroll" id="scroll-快剪"></div>
+                <h3 class="category-title video-toggle" id="videoToggle">
+                    🎬 视频专区 <span class="toggle-arrow">▸</span>
+                </h3>
+                <div class="video-panel" id="videoPanel">
+                    <div class="video-sub">
+                        <h4 class="video-sub-title">🎬 MV 作品</h4>
+                        <div class="gallery-scroll" id="scroll-mv"></div>
+                    </div>
+                    <div class="video-sub">
+                        <h4 class="video-sub-title">🎞️ 婚礼摄像 · 3分钟片花</h4>
+                        <div class="gallery-scroll" id="scroll-片花"></div>
+                    </div>
+                    <div class="video-sub">
+                        <h4 class="video-sub-title">⚡ 婚礼摄像 · 快剪</h4>
+                        <div class="gallery-scroll" id="scroll-快剪"></div>
+                    </div>
+                </div>
             </div>
 
             <!-- 产品人像 -->
@@ -1576,6 +1624,18 @@
 
         // Re-collect all gallery items after dynamic generation
         const allGalleryItems = () => document.querySelectorAll('.gallery-item');
+
+        // ========== Video Accordion Toggle ==========
+        const videoToggle = document.getElementById('videoToggle');
+        const videoPanel = document.getElementById('videoPanel');
+        const toggleArrow = videoToggle.querySelector('.toggle-arrow');
+        let videoOpen = false;
+
+        videoToggle.addEventListener('click', () => {
+            videoOpen = !videoOpen;
+            videoPanel.classList.toggle('open', videoOpen);
+            toggleArrow.classList.toggle('open', videoOpen);
+        });
 
         // ========== Lightbox ==========
         const lightbox = document.getElementById('lightbox');
