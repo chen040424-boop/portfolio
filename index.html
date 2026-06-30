@@ -690,13 +690,20 @@
             flex: 0 0 auto;
             height: 280px;
             flex-shrink: 0;
+            min-width: 100px;
         }
 
         .gallery-scroll.natural .gallery-item img {
+            display: block;
             height: 100%;
             width: auto;
             max-width: none;
             object-fit: contain;
+        }
+
+        .gallery-scroll.natural .gallery-item .gallery-overlay,
+        .gallery-scroll.natural .gallery-item .gallery-placeholder {
+            width: 100%;
         }
 
         @media (max-width: 768px) {
@@ -1668,6 +1675,22 @@
 
         // Re-collect all gallery items after dynamic generation
         const allGalleryItems = () => document.querySelectorAll('.gallery-item');
+
+        // ========== Natural ratio images (set after gallery populated) ==========
+        function fixNaturalRatios() {
+            document.querySelectorAll('.gallery-scroll.natural .gallery-item img').forEach(img => {
+                if (img.complete && img.naturalWidth) {
+                    const ratio = img.naturalWidth / img.naturalHeight;
+                    img.closest('.gallery-item').style.flexBasis = (280 * ratio) + 'px';
+                } else {
+                    img.onload = function() {
+                        const r = img.naturalWidth / img.naturalHeight;
+                        img.closest('.gallery-item').style.flexBasis = (280 * r) + 'px';
+                    };
+                }
+            });
+        }
+        setTimeout(fixNaturalRatios, 500);
 
         // ========== Accordion Toggles ==========
         function setupToggle(toggleId, panelId) {
