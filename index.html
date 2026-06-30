@@ -604,6 +604,51 @@
             color: var(--text-primary);
         }
 
+        .video-toggle {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .video-toggle:hover {
+            color: var(--accent-dark);
+        }
+
+        .toggle-arrow {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .toggle-arrow.open {
+            transform: rotate(90deg);
+        }
+
+        .video-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .video-panel.open {
+            max-height: 1200px;
+        }
+
+        .video-sub {
+            margin-bottom: 24px;
+        }
+
+        .video-sub-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            padding-left: 8px;
+            border-left: 3px solid var(--accent);
+        }
+
         .gallery-scroll {
             display: flex;
             gap: 14px;
@@ -632,6 +677,12 @@
             flex: 0 0 300px;
             scroll-snap-align: start;
             aspect-ratio: 4 / 3;
+        }
+
+        /* 综艺节目竖图 */
+        #scroll-节目作品 .gallery-item {
+            flex: 0 0 200px;
+            aspect-ratio: 3 / 4;
         }
 
         @media (max-width: 768px) {
@@ -865,12 +916,13 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 32px;
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 32px;
+            padding: 24px;
+            display: flex;
+            gap: 24px;
             transition: var(--transition);
             box-shadow: var(--shadow);
+            align-items: stretch;
+            min-height: 220px;
         }
 
         .exp-card:hover {
@@ -878,28 +930,79 @@
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
+        .exp-photo {
+            width: 160px;
+            flex-shrink: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .exp-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .exp-photo .exp-photo-placeholder {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-align: center;
+            padding: 16px;
+        }
+
+        .exp-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+
+        .exp-header h3 {
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
         .exp-date {
             font-size: 0.8rem;
             letter-spacing: 1px;
             color: var(--accent);
+            white-space: nowrap;
         }
 
-        .exp-info h3 {
-            font-size: 1.15rem;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-        }
-
-        .exp-info .org {
+        .exp-body .org {
             color: var(--text-muted);
             font-size: 0.9rem;
             margin-bottom: 12px;
         }
 
-        .exp-info p {
+        .exp-body p {
             color: var(--text-secondary);
             font-size: 0.9rem;
             line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .exp-card {
+                flex-direction: column;
+                min-height: auto;
+            }
+            .exp-photo {
+                width: 100%;
+                height: 160px;
+            }
         }
 
         /* ========== Contact ========== */
@@ -1097,33 +1200,53 @@
             <h2 class="section-title">实习与项目经历</h2>
             <div class="exp-grid">
                 <div class="exp-card fade-in">
-                    <div class="exp-date">2023.09 - 2025.10</div>
-                    <div class="exp-info">
-                        <h3>摄影师 / 摄像师</h3>
+                    <div class="exp-photo">
+                        <div class="exp-photo-placeholder">📷<br>壹雙摄影</div>
+                    </div>
+                    <div class="exp-body">
+                        <div class="exp-header">
+                            <h3>摄影师 / 摄像师</h3>
+                            <span class="exp-date">2023.09 - 2025.10</span>
+                        </div>
                         <div class="org">武汉壹雙摄影工作室</div>
                         <p>负责婚礼摄像主副机位拍摄、生日宴跟拍、中小学生研学活动跟拍；协助工作室为知名婚礼堂拍摄宣传视频，作品在社交媒体获得10万+曝光</p>
                     </div>
                 </div>
                 <div class="exp-card fade-in">
-                    <div class="exp-date">2024.11 - 2025.02</div>
-                    <div class="exp-info">
-                        <h3>摄影师 / 后期剪辑</h3>
+                    <div class="exp-photo">
+                        <div class="exp-photo-placeholder">🎬<br>焉识传媒</div>
+                    </div>
+                    <div class="exp-body">
+                        <div class="exp-header">
+                            <h3>摄影师 / 后期剪辑</h3>
+                            <span class="exp-date">2024.11 - 2025.02</span>
+                        </div>
                         <div class="org">武汉焉识传媒（校内大学生创业孵化基地）</div>
                         <p>负责校内图书馆宣传MV拍摄及诗朗诵拍摄；参与校内抖音达人孵化计划，校园宿舍生活类短视频拍摄、后期剪辑及文案撰写</p>
                     </div>
                 </div>
                 <div class="exp-card fade-in">
-                    <div class="exp-date">2025.06 - 2025.08</div>
-                    <div class="exp-info">
-                        <h3>摄影助理 / 短视频助理</h3>
+                    <div class="exp-photo">
+                        <div class="exp-photo-placeholder">📱<br>开讯众创</div>
+                    </div>
+                    <div class="exp-body">
+                        <div class="exp-header">
+                            <h3>摄影助理 / 短视频助理</h3>
+                            <span class="exp-date">2025.06 - 2025.08</span>
+                        </div>
                         <div class="org">武汉开讯众创传媒</div>
                         <p>负责公司广告业务及TikTok跨境电商视频拍摄与策划；负责公司账号内容拍摄，产出视频累计浏览量2500万</p>
                     </div>
                 </div>
                 <div class="exp-card fade-in">
-                    <div class="exp-date">2025.12 - 2026.05</div>
-                    <div class="exp-info">
-                        <h3>后期剪辑 / 节目制作实习生 / 实习导演</h3>
+                    <div class="exp-photo">
+                        <img src="实习经历/jykt.jpg" alt="金鹰卡通录制现场">
+                    </div>
+                    <div class="exp-body">
+                        <div class="exp-header">
+                            <h3>后期剪辑 / 节目制作实习生 / 实习导演</h3>
+                            <span class="exp-date">2025.12 - 2026.05</span>
+                        </div>
                         <div class="org">湖南广播电视台 · 金鹰卡通卫视</div>
                         <p>参与金鹰卡通《麦咭帮帮队》《麦咭动物城》两档少儿节目制作，独立负责后期精剪，累计完成数十期节目成片；参与台本撰写与现场录制；加入2026《芒果童学艺术盛典》现场组及道具组</p>
                     </div>
@@ -1180,14 +1303,30 @@
 
             <!-- 节目作品 -->
             <div class="gallery-category fade-in">
-                <h3 class="category-title">📺 节目作品</h3>
+                <h3 class="category-title">📺 综艺节目剪辑作品</h3>
                 <div class="gallery-scroll" id="scroll-节目作品"></div>
             </div>
 
-            <!-- 视频作品 -->
+            <!-- 封面图合集（可展开） -->
             <div class="gallery-category fade-in">
-                <h3 class="category-title">🎬 视频作品</h3>
-                <div class="gallery-scroll" id="scroll-video"></div>
+                <h3 class="category-title video-toggle" id="videoToggle">
+                    🎬 拍剪视频作品 <span class="toggle-hint">（展开查看作品分类）</span><span class="toggle-arrow"> ▸</span>
+                </h3>
+                <div class="gallery-scroll" id="scroll-covers"></div>
+                <div class="video-panel" id="videoPanel">
+                    <div class="video-sub">
+                        <h4 class="video-sub-title">🎬 MV 作品</h4>
+                        <div class="gallery-scroll" id="scroll-mv"></div>
+                    </div>
+                    <div class="video-sub">
+                        <h4 class="video-sub-title">🎞️ 婚礼摄像 · 3分钟片花</h4>
+                        <div class="gallery-scroll" id="scroll-片花"></div>
+                    </div>
+                    <div class="video-sub">
+                        <h4 class="video-sub-title">⚡ 婚礼摄像 · 快剪</h4>
+                        <div class="gallery-scroll" id="scroll-快剪"></div>
+                    </div>
+                </div>
             </div>
 
             <!-- 产品人像 -->
@@ -1361,9 +1500,27 @@
                 { src: 'images/麦咭动物城.jpg', title: '麦咭动物城', link: 'https://www.mgtv.com/b/854539/24236755.html', desc: '后期剪辑 · 金鹰卡通' },
                 { src: 'images/麦咭帮帮队.jpg', title: '麦咭帮帮队', link: 'https://www.mgtv.com/b/820455/23951228.html', desc: '后期剪辑 · 金鹰卡通' },
             ],
-            'video': [
-                { src: 'videos/videosmv-showcase.mp4.mp4', title: 'MV 拍摄展示', isVideo: true },
-                { src: 'videos/videoswedding-showcase.mp4.mp4', title: '婚礼摄像展示', isVideo: true },
+            'covers': [
+                { src: 'videos/mv-封面.jpg', title: '校图书馆音乐MV', isVideo: true, videoSrc: 'videos/校图书馆音乐MV.mp4' },
+                { src: 'videos/片花1-封面.jpg', title: '片花 ①', isVideo: true, videoSrc: 'videos/婚礼摄像3分钟片花 (1).mp4' },
+                { src: 'videos/片花2-封面.jpg', title: '片花 ②', isVideo: true, videoSrc: 'videos/婚礼摄像3分钟片花 (2).mp4' },
+                { src: 'videos/快剪1-封面.jpg', title: '快剪 ①', isVideo: true, videoSrc: 'videos/婚礼摄像快剪 (1).mp4' },
+                { src: 'videos/快剪2-封面.jpg', title: '快剪 ②', isVideo: true, videoSrc: 'videos/婚礼摄像快剪 (2).mp4' },
+                { src: 'videos/快剪3-封面.jpg', title: '快剪 ③', isVideo: true, videoSrc: 'videos/婚礼摄像快剪 (3).mp4' },
+                { src: 'videos/快剪4-封面.jpg', title: '快剪 ④', isVideo: true, videoSrc: 'videos/婚礼摄像快剪 (4).mp4' },
+            ],
+            'mv': [
+                { src: 'videos/校图书馆音乐MV.mp4', poster: 'videos/mv-封面.jpg', title: '校图书馆音乐MV', isVideo: true },
+            ],
+            '片花': [
+                { src: 'videos/婚礼摄像3分钟片花 (1).mp4', poster: 'videos/片花1-封面.jpg', title: '片花 ①', isVideo: true },
+                { src: 'videos/婚礼摄像3分钟片花 (2).mp4', poster: 'videos/片花2-封面.jpg', title: '片花 ②', isVideo: true },
+            ],
+            '快剪': [
+                { src: 'videos/婚礼摄像快剪 (1).mp4', poster: 'videos/快剪1-封面.jpg', title: '快剪 ①', isVideo: true },
+                { src: 'videos/婚礼摄像快剪 (2).mp4', poster: 'videos/快剪2-封面.jpg', title: '快剪 ②', isVideo: true },
+                { src: 'videos/婚礼摄像快剪 (3).mp4', poster: 'videos/快剪3-封面.jpg', title: '快剪 ③', isVideo: true },
+                { src: 'videos/婚礼摄像快剪 (4).mp4', poster: 'videos/快剪4-封面.jpg', title: '快剪 ④', isVideo: true },
             ],
             '产品人像': [
                 { src: '产品人像/1.jpg', title: '产品人像 · 壹' },
@@ -1434,17 +1591,21 @@
                 div.dataset.index = idx;
                 if (item.isVideo) {
                     div.dataset.type = 'video';
+                    div.dataset.videoSrc = item.videoSrc || item.src;
+                    const posterUrl = item.poster ? encodeURI(item.poster) : encodeURI(item.src);
                     div.innerHTML = `
-                        <video src="${encodeURI(item.src)}"
-                               preload="metadata" muted loop playsinline
-                               style="width:100%;height:100%;object-fit:cover;"></video>
+                        <img src="${posterUrl}"
+                             alt="${item.title}"
+                             loading="lazy"
+                             style="width:100%;height:100%;object-fit:cover;"
+                             onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex';">
                         <div class="gallery-placeholder" style="display:none;">
                             <div class="icon">🎬</div>
                             <div class="label">${item.title}</div>
                         </div>
                         <div class="gallery-overlay">
                             <h4>${item.title}</h4>
-                            <p>视频作品 · 点击播放</p>
+                            <p>▶ 点击播放</p>
                         </div>`;
                 } else if (item.link) {
                     div.dataset.type = 'link';
@@ -1483,6 +1644,18 @@
 
         // Re-collect all gallery items after dynamic generation
         const allGalleryItems = () => document.querySelectorAll('.gallery-item');
+
+        // ========== Video Accordion Toggle ==========
+        const videoToggle = document.getElementById('videoToggle');
+        const videoPanel = document.getElementById('videoPanel');
+        const toggleArrow = videoToggle.querySelector('.toggle-arrow');
+        let videoOpen = false;
+
+        videoToggle.addEventListener('click', () => {
+            videoOpen = !videoOpen;
+            videoPanel.classList.toggle('open', videoOpen);
+            toggleArrow.classList.toggle('open', videoOpen);
+        });
 
         // ========== Lightbox ==========
         const lightbox = document.getElementById('lightbox');
@@ -1525,9 +1698,10 @@
             if (existingVideo) existingVideo.remove();
             lightboxImg.style.display = 'none';
 
-            if (video && video.src && item.dataset.type === 'video') {
+            const videoSrc = item.dataset.videoSrc || (video ? video.src : '');
+            if (videoSrc && item.dataset.type === 'video') {
                 const lbVideo = document.createElement('video');
-                lbVideo.src = video.src;
+                lbVideo.src = videoSrc;
                 lbVideo.controls = true;
                 lbVideo.autoplay = true;
                 lbVideo.className = 'lightbox-video';
