@@ -685,15 +685,17 @@
             aspect-ratio: 3 / 4;
         }
 
-        /* 婚礼摄影按原图比例 */
+        /* 婚礼摄影按各自原图比例 */
         #scroll-婚礼摄影 .gallery-item {
-            flex: 0 0 360px;
+            flex: 0 0 auto;
+            width: auto;
+            height: 280px;
             aspect-ratio: auto;
         }
 
         #scroll-婚礼摄影 .gallery-item img {
-            width: 100%;
-            height: auto;
+            width: auto;
+            height: 100%;
             object-fit: contain;
         }
 
