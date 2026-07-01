@@ -688,7 +688,8 @@
             aspect-ratio: 3 / 4;
         }
 
-        #scroll-节目作品 .gallery-item::after {
+        #scroll-节目作品 .gallery-item::after,
+        #scroll-covers .gallery-item::after {
             content: '▶';
             position: absolute;
             top: 50%;
@@ -708,7 +709,8 @@
             transition: opacity 0.3s ease;
         }
 
-        #scroll-节目作品 .gallery-item:hover::after {
+        #scroll-节目作品 .gallery-item:hover::after,
+        #scroll-covers .gallery-item:hover::after {
             opacity: 1;
         }
 
