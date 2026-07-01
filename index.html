@@ -1150,14 +1150,29 @@
 
             .lightbox-nav.prev { left: 8px; }
             .lightbox-nav.next { right: 8px; }
+
+            /* Mobile additions */
+            .hero-contact { font-size: 0.82rem; gap: 12px; }
+            .hero .subtitle { font-size: 0.95rem; letter-spacing: 4px; }
+            .hero .bio-short { font-size: 0.85rem; }
+            .hero-bg-deco { font-size: 3rem; right: 0; }
+            .btn { padding: 9px 16px; font-size: 0.8rem; }
+            .section { padding: 60px 16px; }
+            .advantage-item { flex-direction: column; gap: 12px; }
+            .gallery-scroll .gallery-item { flex: 0 0 220px; }
+            #scroll-节目作品 .gallery-item { flex: 0 0 160px; }
+            .exp-card { padding: 24px; }
         }
 
         @media (max-width: 480px) {
-            .section { padding: 60px 16px; }
+            .section { padding: 40px 12px; }
             .hero { padding: 100px 16px 60px; }
-            .hero h1 { font-size: 2rem; }
-            .gallery { grid-template-columns: 1fr; }
-            .btn { padding: 10px 20px; font-size: 0.8rem; }
+            .hero h1 { font-size: 1.7rem; }
+            .btn { padding: 8px 14px; font-size: 0.75rem; }
+            .gallery-scroll .gallery-item { flex: 0 0 180px; }
+            #scroll-节目作品 .gallery-item { flex: 0 0 140px; }
+            .exp-card { padding: 16px; }
+            .info-card { padding: 16px; }
         }
     </style>
 </head>
