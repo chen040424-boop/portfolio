@@ -442,6 +442,26 @@
         }
 
         /* ========== About ========== */
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 36px 40px;
+            box-shadow: var(--shadow);
+            max-width: 750px;
+        }
+
+        .about-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 2;
+            margin-bottom: 16px;
+        }
+
+        .about-card p:last-child {
+            margin-bottom: 0;
+        }
+
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1474,7 +1494,7 @@
         <div class="section-inner">
             <p class="section-label">06 / 关于我</p>
             <h2 class="section-title">关于我</h2>
-            <div class="about-text fade-in" style="max-width: 700px;">
+            <div class="about-card fade-in">
                 <p>
                     你好，我是肖子宸，摄影专业出身，具备从前期策划、拍摄执行到后期剪辑的全链路内容创作能力。
                 </p>
