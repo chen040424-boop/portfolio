@@ -550,6 +550,38 @@
         }
 
         /* ========== Skills ========== */
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .skills-tags .skill-tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            box-shadow: var(--shadow);
+        }
+
+        .skills-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skills-tools span {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            background: var(--bg-secondary);
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        /* ========== Old Skills Grid (unused) ========== */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -1233,38 +1265,17 @@
     <section class="section" id="skills">
         <div class="section-inner">
             <p class="section-label">03 / 专业技能</p>
-            <h2 class="section-title">摄影与后期技能</h2>
-            <div class="skills-grid">
-                <div class="skill-card fade-in">
-                    <div class="skill-icon">📷</div>
-                    <h4>婚礼 / 活动摄影摄像</h4>
-                    <p>丰富的婚礼摄像主副机位经验，熟练应对婚宴、生日宴、研学活动等多类型场景的拍摄需求</p>
-                </div>
-                <div class="skill-card fade-in">
-                    <div class="skill-icon">🎬</div>
-                    <h4>短视频策划与拍摄</h4>
-                    <p>擅长抖音、TikTok等平台短视频内容策划与拍摄，具备达人孵化、账号运营的实战经验</p>
-                </div>
-                <div class="skill-card fade-in">
-                    <div class="skill-icon">✂️</div>
-                    <h4>后期剪辑</h4>
-                    <p>熟练使用 Premiere Pro、DaVinci Resolve，具备节目成片精简制作、节奏把控与剪辑风格调整能力</p>
-                </div>
-                <div class="skill-card fade-in">
-                    <div class="skill-icon">📝</div>
-                    <h4>内容策划与文案</h4>
-                    <p>具备节目台本与剧本撰写经验，能够根据内容调性进行文案策划与脚本创作</p>
-                </div>
-                <div class="skill-card fade-in">
-                    <div class="skill-icon">🖼️</div>
-                    <h4>产品 / 广告摄影</h4>
-                    <p>掌握产品摄影与广告拍摄技法，有跨境电商 TikTok 视频及品牌广告宣传拍摄经验</p>
-                </div>
-                <div class="skill-card fade-in">
-                    <div class="skill-icon">🏔️</div>
-                    <h4>人像与风光摄影</h4>
-                    <p>擅长自然光与影棚人像拍摄，掌握风光摄影核心技法，构图与色彩表达能力扎实</p>
-                </div>
+            <h2 class="section-title">专业技能</h2>
+            <div class="skills-tags fade-in">
+                <span class="skill-tag">📷 婚礼 / 活动摄影</span>
+                <span class="skill-tag">🎬 短视频策划与拍摄</span>
+                <span class="skill-tag">✂️ 后期剪辑与制作</span>
+                <span class="skill-tag">📝 内容策划与文案</span>
+                <span class="skill-tag">🖼️ 产品 / 广告摄影</span>
+                <span class="skill-tag">🤖 AI 工具应用</span>
+            </div>
+            <div class="skills-tools fade-in">
+                <span>Premiere Pro</span><span>DaVinci Resolve</span><span>剪映</span><span>Photoshop</span><span>醒图</span><span>美图秀秀</span><span>Excel</span><span>VLOOKUP</span><span>秀米</span><span>TikTok</span><span>抖音</span><span>视频号</span>
             </div>
         </div>
     </section>
