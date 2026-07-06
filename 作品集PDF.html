@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>肖子宸 · 摄影作品集</title>
+<style>
+  @page { size: A4; margin: 12mm; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'PingFang SC','Microsoft YaHei',sans-serif;
+    color: #2c2c2c;
+    background: #fff;
+    padding: 20px;
+  }
+
+  .cover {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    height: 95vh; text-align: center;
+    page-break-after: always;
+  }
+  .cover h1 { font-size: 2.5rem; letter-spacing:8px; margin-bottom:12px; }
+  .cover .sub { font-size:1rem; color:#a68b5c; letter-spacing:4px; margin-bottom:32px; }
+  .cover .info { font-size:0.85rem; color:#999; }
+
+  .cat-title {
+    font-size: 1.4rem; font-weight: 700; letter-spacing:2px;
+    padding: 12px 0; margin: 40px 0 20px;
+    border-bottom: 2px solid #c4a882;
+    page-break-after: avoid;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .grid.col2 { grid-template-columns: repeat(2, 1fr); }
+
+  .item {
+    break-inside: avoid;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .item img {
+    width: 100%; display: block;
+    object-fit: cover;
+    max-height: 240px;
+  }
+  .item .label {
+    font-size: 0.7rem; color: #999;
+    text-align: center; padding: 4px 0;
+  }
+
+  @media print {
+    body { padding: 0; }
+    .cat-title { margin-top: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>肖子宸 · 摄影作品集</h1>
+  <p class="sub">摄影师 / 剪辑师</p>
+  <p class="info">3056353551@qq.com | 17870166190</p>
+</div>
+
+<div class="cat-title">💒 婚礼摄影作品</div>
+<div class="grid" id="grid-婚礼摄影作品集"></div>
+
+<div class="cat-title">🎓 校园写真</div>
+<div class="grid" id="grid-校园写真"></div>
+
+<div class="cat-title">🌸 日系人像</div>
+<div class="grid" id="grid-日系人像"></div>
+
+<div class="cat-title">🚶 人像街拍</div>
+<div class="grid" id="grid-人像街拍"></div>
+
+<div class="cat-title">🏪 探店街拍</div>
+<div class="grid" id="grid-探店街拍"></div>
+
+<div class="cat-title">🌿 日常氛围</div>
+<div class="grid col2" id="grid-日常氛围"></div>
+
+<div class="cat-title">📷 产品人像</div>
+<div class="grid col2" id="grid-产品人像"></div>
+
+<div class="cat-title">🖼️ 产品摄影</div>
+<div class="grid" id="grid-产品摄影"></div>
+
+<div class="cat-title">📸 其他作品</div>
+<div class="grid" id="grid-其他作品"></div>
+
+<script>
+const basePath = 'images/';
+const galleryData = {
+  '婚礼摄影作品集': [
+    '婚礼摄影作品集/婚礼9宫格 (1).jpg','婚礼摄影作品集/婚礼9宫格 (2).jpg','婚礼摄影作品集/婚礼9宫格 (3).jpg',
+    '婚礼摄影作品集/婚礼9宫格 (4).jpg','婚礼摄影作品集/婚礼9宫格 (5).jpg','婚礼摄影作品集/婚礼9宫格 (6).jpg',
+    '婚礼摄影作品集/婚礼9宫格 (7).jpg','婚礼摄影作品集/婚礼9宫格 (8).jpg','婚礼摄影作品集/婚礼9宫格 (9).jpg',
+    '婚礼摄影作品集/婚礼9宫格 (10).jpg','婚礼摄影作品集/婚礼9宫格 (11).jpg',
+  ],
+  '校园写真': [
+    '人像摄影/校园写真/校园 (1).jpg','人像摄影/校园写真/校园 (2).jpg','人像摄影/校园写真/校园 (3).jpg',
+    '人像摄影/校园写真/校园 (4).jpg','人像摄影/校园写真/校园 (5).jpg','人像摄影/校园写真/校园 (6).jpg',
+  ],
+  '日系人像': [
+    '人像摄影/日系人像/日系人像 (1).jpg','人像摄影/日系人像/日系人像 (2).jpg','人像摄影/日系人像/日系人像 (3).jpg',
+    '人像摄影/日系人像/日系人像 (4).jpg','人像摄影/日系人像/日系人像 (5).jpg','人像摄影/日系人像/日系人像 (6).jpg',
+    '人像摄影/日系人像/日系人像 (7).jpg','人像摄影/日系人像/日系人像 (8).jpg','人像摄影/日系人像/日系人像 (9).jpg',
+    '人像摄影/日系人像/日系人像 (10).jpg','人像摄影/日系人像/日系人像 (11).jpg','人像摄影/日系人像/日系人像 (12).jpg',
+    '人像摄影/日系人像/日系人像 (13).jpg',
+  ],
+  '人像街拍': [
+    '人像摄影/人像街拍/人像 (1).jpg','人像摄影/人像街拍/人像 (2).jpg','人像摄影/人像街拍/人像 (3).jpg',
+    '人像摄影/人像街拍/人像 (4).jpg','人像摄影/人像街拍/人像 (5).jpg','人像摄影/人像街拍/人像 (6).jpg',
+    '人像摄影/人像街拍/人像 (7).jpg','人像摄影/人像街拍/人像 (8).jpg','人像摄影/人像街拍/人像 (9).jpg',
+    '人像摄影/人像街拍/人像 (10).jpg','人像摄影/人像街拍/人像 (11).jpg',
+  ],
+  '探店街拍': [
+    '人像摄影/探店街拍/探店街拍 (1).jpg','人像摄影/探店街拍/探店街拍 (2).jpg','人像摄影/探店街拍/探店街拍 (3).jpg',
+    '人像摄影/探店街拍/探店街拍 (4).jpg','人像摄影/探店街拍/探店街拍 (5).jpg','人像摄影/探店街拍/探店街拍 (6).jpg',
+    '人像摄影/探店街拍/探店街拍 (7).jpg','人像摄影/探店街拍/探店街拍 (8).jpg','人像摄影/探店街拍/探店街拍 (9).jpg',
+    '人像摄影/探店街拍/探店街拍 (10).jpg',
+  ],
+  '日常氛围': [
+    '人像摄影/日常氛围/日常氛围 (1).jpg','人像摄影/日常氛围/日常氛围 (2).jpg','人像摄影/日常氛围/日常氛围 (3).jpg',
+  ],
+  '产品人像': [
+    '人像摄影/产品人像/1.jpg','人像摄影/产品人像/2.jpg','人像摄影/产品人像/3.jpg','人像摄影/产品人像/4.jpg',
+  ],
+  '产品摄影': [
+    '产品摄影/产品摄影 (1).jpg','产品摄影/产品摄影 (2).jpg','产品摄影/产品摄影 (3).jpg',
+    '产品摄影/产品摄影 (4).jpg','产品摄影/产品摄影 (5).jpg','产品摄影/产品摄影 (6).jpg',
+    '产品摄影/产品摄影 (7).jpg','产品摄影/产品摄影 (8).jpg','产品摄影/产品摄影 (9).jpg',
+    '产品摄影/产品摄影 (10).jpg','产品摄影/产品摄影 (11).jpg','产品摄影/产品摄影 (12).jpg',
+    '产品摄影/产品摄影 (13).jpg','产品摄影/产品摄影 (14).jpg','产品摄影/产品摄影 (15).jpg',
+    '产品摄影/产品摄影 (16).JPG','产品摄影/产品摄影 (17).jpg','产品摄影/产品摄影 (18).JPG',
+    '产品摄影/产品摄影 (19).jpg','产品摄影/产品摄影 (20).JPG','产品摄影/产品摄影 (21).JPG',
+    '产品摄影/产品摄影 (22).jpg','产品摄影/产品摄影 (23).jpg','产品摄影/产品摄影 (24).jpg',
+    '产品摄影/产品摄影 (25).jpg','产品摄影/产品摄影 (26).jpg','产品摄影/产品摄影 (27).jpg',
+    '产品摄影/产品摄影 (28).jpg',
+  ],
+  '其他作品': [
+    '其他作品/风光摄影 (1).jpg','其他作品/风光摄影 (2).jpg','其他作品/风光摄影 (3).jpg',
+    '其他作品/风光摄影 (4).jpg','其他作品/风光摄影 (5).jpg',
+  ],
+};
+
+Object.keys(galleryData).forEach(cat => {
+  const container = document.getElementById('grid-' + cat);
+  if (!container) return;
+  galleryData[cat].forEach(path => {
+    const div = document.createElement('div');
+    div.className = 'item';
+    const name = path.split('/').pop().replace(/\.(jpg|jpeg|png|JPG)$/i, '');
+    div.innerHTML = '<img src="' + encodeURI(basePath + path) + '" loading="lazy"><div class="label">' + name + '</div>';
+    container.appendChild(div);
+  });
+});
+</script>
+</body>
+</html>
