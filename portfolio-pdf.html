@@ -4,13 +4,11 @@
 <meta charset="UTF-8">
 <title>肖子宸 · 摄影作品集</title>
 <style>
-  @page { size: A4; margin: 12mm; }
+  @page { size: A4; margin: 10mm; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
     font-family: 'PingFang SC','Microsoft YaHei',sans-serif;
-    color: #2c2c2c;
-    background: #fff;
-    padding: 20px;
+    color: #2c2c2c; background: #fff; padding: 16px;
   }
 
   .cover {
@@ -19,42 +17,34 @@
     height: 95vh; text-align: center;
     page-break-after: always;
   }
-  .cover h1 { font-size: 2.5rem; letter-spacing:8px; margin-bottom:12px; }
-  .cover .sub { font-size:1rem; color:#a68b5c; letter-spacing:4px; margin-bottom:32px; }
+  .cover h1 { font-size: 2.5rem; letter-spacing:6px; margin-bottom:10px; }
+  .cover .sub { font-size:1rem; color:#a68b5c; letter-spacing:4px; margin-bottom:28px; }
   .cover .info { font-size:0.85rem; color:#999; }
 
   .cat-title {
-    font-size: 1.4rem; font-weight: 700; letter-spacing:2px;
-    padding: 12px 0; margin: 40px 0 20px;
+    font-size: 1.3rem; font-weight:700; letter-spacing:2px;
+    padding: 10px 0; margin: 36px 0 16px;
     border-bottom: 2px solid #c4a882;
     page-break-after: avoid;
   }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+  .gallery-row {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    align-items: flex-start;
   }
-  .grid.col2 { grid-template-columns: repeat(2, 1fr); }
-
-  .item {
+  .gallery-row .img-wrap {
     break-inside: avoid;
-    border-radius: 4px;
-    overflow: hidden;
+    border-radius: 2px; overflow: hidden;
+    background: #f5f5f5;
   }
-  .item img {
-    width: 100%; display: block;
-    object-fit: cover;
-    max-height: 240px;
+  .gallery-row .img-wrap img {
+    display: block; height: 200px; width: auto;
   }
-  .item .label {
-    font-size: 0.7rem; color: #999;
-    text-align: center; padding: 4px 0;
-  }
+  .gallery-row .img-wrap.portrait img { height: 240px; }
 
   @media print {
     body { padding: 0; }
-    .cat-title { margin-top: 24px; }
+    .cat-title { margin-top: 20px; }
   }
 </style>
 </head>
@@ -66,72 +56,47 @@
   <p class="info">3056353551@qq.com | 17870166190</p>
 </div>
 
-<div class="cat-title">💒 婚礼摄影作品</div>
-<div class="grid" id="grid-婚礼摄影作品集"></div>
-
-<div class="cat-title">🎓 校园写真</div>
-<div class="grid" id="grid-校园写真"></div>
-
-<div class="cat-title">🌸 日系人像</div>
-<div class="grid" id="grid-日系人像"></div>
-
-<div class="cat-title">🚶 人像街拍</div>
-<div class="grid" id="grid-人像街拍"></div>
-
-<div class="cat-title">🏪 探店街拍</div>
-<div class="grid" id="grid-探店街拍"></div>
-
-<div class="cat-title">🌿 日常氛围</div>
-<div class="grid col2" id="grid-日常氛围"></div>
-
-<div class="cat-title">📷 产品人像</div>
-<div class="grid col2" id="grid-产品人像"></div>
-
-<div class="cat-title">🖼️ 产品摄影</div>
-<div class="grid" id="grid-产品摄影"></div>
-
-<div class="cat-title">📸 其他作品</div>
-<div class="grid" id="grid-其他作品"></div>
+<div id="app"></div>
 
 <script>
 const basePath = 'images/';
-const galleryData = {
-  '婚礼摄影作品集': [
+const categories = [
+  { id:'婚礼', name:'💒 婚礼摄影作品', files:[
     '婚礼摄影作品集/婚礼9宫格 (1).jpg','婚礼摄影作品集/婚礼9宫格 (2).jpg','婚礼摄影作品集/婚礼9宫格 (3).jpg',
     '婚礼摄影作品集/婚礼9宫格 (4).jpg','婚礼摄影作品集/婚礼9宫格 (5).jpg','婚礼摄影作品集/婚礼9宫格 (6).jpg',
     '婚礼摄影作品集/婚礼9宫格 (7).jpg','婚礼摄影作品集/婚礼9宫格 (8).jpg','婚礼摄影作品集/婚礼9宫格 (9).jpg',
     '婚礼摄影作品集/婚礼9宫格 (10).jpg','婚礼摄影作品集/婚礼9宫格 (11).jpg',
-  ],
-  '校园写真': [
+  ]},
+  { id:'校园', name:'🎓 校园写真', files:[
     '人像摄影/校园写真/校园 (1).jpg','人像摄影/校园写真/校园 (2).jpg','人像摄影/校园写真/校园 (3).jpg',
     '人像摄影/校园写真/校园 (4).jpg','人像摄影/校园写真/校园 (5).jpg','人像摄影/校园写真/校园 (6).jpg',
-  ],
-  '日系人像': [
+  ]},
+  { id:'日系', name:'🌸 日系人像', files:[
     '人像摄影/日系人像/日系人像 (1).jpg','人像摄影/日系人像/日系人像 (2).jpg','人像摄影/日系人像/日系人像 (3).jpg',
     '人像摄影/日系人像/日系人像 (4).jpg','人像摄影/日系人像/日系人像 (5).jpg','人像摄影/日系人像/日系人像 (6).jpg',
     '人像摄影/日系人像/日系人像 (7).jpg','人像摄影/日系人像/日系人像 (8).jpg','人像摄影/日系人像/日系人像 (9).jpg',
     '人像摄影/日系人像/日系人像 (10).jpg','人像摄影/日系人像/日系人像 (11).jpg','人像摄影/日系人像/日系人像 (12).jpg',
     '人像摄影/日系人像/日系人像 (13).jpg',
-  ],
-  '人像街拍': [
+  ]},
+  { id:'街拍', name:'🚶 人像街拍', files:[
     '人像摄影/人像街拍/人像 (1).jpg','人像摄影/人像街拍/人像 (2).jpg','人像摄影/人像街拍/人像 (3).jpg',
     '人像摄影/人像街拍/人像 (4).jpg','人像摄影/人像街拍/人像 (5).jpg','人像摄影/人像街拍/人像 (6).jpg',
     '人像摄影/人像街拍/人像 (7).jpg','人像摄影/人像街拍/人像 (8).jpg','人像摄影/人像街拍/人像 (9).jpg',
     '人像摄影/人像街拍/人像 (10).jpg','人像摄影/人像街拍/人像 (11).jpg',
-  ],
-  '探店街拍': [
+  ]},
+  { id:'探店', name:'🏪 探店街拍', files:[
     '人像摄影/探店街拍/探店街拍 (1).jpg','人像摄影/探店街拍/探店街拍 (2).jpg','人像摄影/探店街拍/探店街拍 (3).jpg',
     '人像摄影/探店街拍/探店街拍 (4).jpg','人像摄影/探店街拍/探店街拍 (5).jpg','人像摄影/探店街拍/探店街拍 (6).jpg',
     '人像摄影/探店街拍/探店街拍 (7).jpg','人像摄影/探店街拍/探店街拍 (8).jpg','人像摄影/探店街拍/探店街拍 (9).jpg',
     '人像摄影/探店街拍/探店街拍 (10).jpg',
-  ],
-  '日常氛围': [
+  ]},
+  { id:'日常', name:'🌿 日常氛围', files:[
     '人像摄影/日常氛围/日常氛围 (1).jpg','人像摄影/日常氛围/日常氛围 (2).jpg','人像摄影/日常氛围/日常氛围 (3).jpg',
-  ],
-  '产品人像': [
+  ]},
+  { id:'产品人像', name:'📷 产品人像', files:[
     '人像摄影/产品人像/1.jpg','人像摄影/产品人像/2.jpg','人像摄影/产品人像/3.jpg','人像摄影/产品人像/4.jpg',
-  ],
-  '产品摄影': [
+  ]},
+  { id:'产品摄影', name:'🖼️ 产品摄影', files:[
     '产品摄影/产品摄影 (1).jpg','产品摄影/产品摄影 (2).jpg','产品摄影/产品摄影 (3).jpg',
     '产品摄影/产品摄影 (4).jpg','产品摄影/产品摄影 (5).jpg','产品摄影/产品摄影 (6).jpg',
     '产品摄影/产品摄影 (7).jpg','产品摄影/产品摄影 (8).jpg','产品摄影/产品摄影 (9).jpg',
@@ -142,24 +107,52 @@ const galleryData = {
     '产品摄影/产品摄影 (22).jpg','产品摄影/产品摄影 (23).jpg','产品摄影/产品摄影 (24).jpg',
     '产品摄影/产品摄影 (25).jpg','产品摄影/产品摄影 (26).jpg','产品摄影/产品摄影 (27).jpg',
     '产品摄影/产品摄影 (28).jpg',
-  ],
-  '其他作品': [
+  ]},
+  { id:'其他', name:'📸 其他作品', files:[
     '其他作品/风光摄影 (1).jpg','其他作品/风光摄影 (2).jpg','其他作品/风光摄影 (3).jpg',
     '其他作品/风光摄影 (4).jpg','其他作品/风光摄影 (5).jpg',
-  ],
-};
+  ]},
+];
 
-Object.keys(galleryData).forEach(cat => {
-  const container = document.getElementById('grid-' + cat);
-  if (!container) return;
-  galleryData[cat].forEach(path => {
-    const div = document.createElement('div');
-    div.className = 'item';
-    const name = path.split('/').pop().replace(/\.(jpg|jpeg|png|JPG)$/i, '');
-    div.innerHTML = '<img src="' + encodeURI(basePath + path) + '" loading="lazy"><div class="label">' + name + '</div>';
-    container.appendChild(div);
-  });
+const app = document.getElementById('app');
+
+categories.forEach(cat => {
+  const title = document.createElement('div');
+  title.className = 'cat-title';
+  title.textContent = cat.name;
+  app.appendChild(title);
+
+  const row = document.createElement('div');
+  row.className = 'gallery-row';
+  row.id = 'row-' + cat.id;
+  app.appendChild(row);
 });
+
+function renderCat(cat) {
+  const row = document.getElementById('row-' + cat.id);
+  const items = [];
+  let loaded = 0;
+  cat.files.forEach(file => {
+    const img = new Image();
+    img.onload = function() {
+      items.push({ file, portrait: img.naturalHeight > img.naturalWidth });
+      loaded++;
+      if (loaded === cat.files.length) {
+        items.sort((a,b) => (a.portrait ? 1 : 0) - (b.portrait ? 1 : 0));
+        items.forEach(item => {
+          const wrap = document.createElement('div');
+          wrap.className = 'img-wrap' + (item.portrait ? ' portrait' : '');
+          wrap.innerHTML = '<img src="' + encodeURI(basePath + item.file) + '">';
+          row.appendChild(wrap);
+        });
+      }
+    };
+    img.onerror = function() { loaded++; };
+    img.src = encodeURI(basePath + file);
+  });
+}
+
+categories.forEach(renderCat);
 </script>
 </body>
 </html>
