@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>肖子宸 · 视频作品集</title>
+<style>
+  @page { size: A4; margin: 10mm; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; color:#2c2c2c; background:#fff; padding:14px; }
+
+  .cover { display:flex; flex-direction:column; align-items:center; justify-content:center; height:95vh; text-align:center; page-break-after:always; }
+  .cover h1 { font-size:2.5rem; letter-spacing:6px; margin-bottom:10px; }
+  .cover .sub { font-size:1rem; color:#a68b5c; letter-spacing:4px; margin-bottom:28px; }
+  .cover .info { font-size:0.85rem; color:#999; }
+
+  .cat-title { font-size:1.2rem; font-weight:700; letter-spacing:2px; padding:8px 0; margin:28px 0 12px; border-bottom:2px solid #c4a882; page-break-after:avoid; }
+
+  .flow { display:flex; flex-wrap:wrap; gap:10px; align-items:flex-start; }
+  .card { break-inside:avoid; background:#fff; border-radius:6px; overflow:hidden; border:1px solid #e8e0d5; width:260px; }
+  .card img { display:block; width:100%; height:auto; }
+  .card .info { padding:8px 10px; }
+  .card .info .title { font-size:0.85rem; font-weight:600; color:#2c2c2c; margin-bottom:2px; }
+  .card .info .role { font-size:0.7rem; color:#a68b5c; }
+
+  @media print { body { padding:0; } .cat-title { margin-top:16px; } }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>肖子宸 · 视频作品集</h1>
+  <p class="sub">后期剪辑 / 节目制作 / 视频创作</p>
+  <p class="info">3056353551@qq.com | 17870166190</p>
+</div>
+
+<div class="cat-title">📺 综艺节目剪辑作品</div>
+<div class="flow" id="grid-节目"></div>
+
+<div class="cat-title">🎬 MV 作品</div>
+<div class="flow" id="grid-mv"></div>
+
+<div class="cat-title">🎞️ 婚礼摄像 · 3分钟片花</div>
+<div class="flow" id="grid-片花"></div>
+
+<div class="cat-title">⚡ 婚礼摄像 · 快剪</div>
+<div class="flow" id="grid-快剪"></div>
+
+<script>
+const data = {
+  '节目': [
+    { img:'images/麦咭动物城.jpg', title:'麦咭动物城', role:'后期剪辑 · 金鹰卡通' },
+    { img:'images/麦咭帮帮队.jpg', title:'麦咭帮帮队', role:'后期剪辑 · 金鹰卡通' },
+  ],
+  'mv': [
+    { img:'videos/mv-封面.jpg', title:'校图书馆音乐MV', role:'拍摄 / 剪辑' },
+  ],
+  '片花': [
+    { img:'videos/片花1-封面.jpg', title:'婚礼片花 ①', role:'拍摄 / 剪辑' },
+    { img:'videos/片花2-封面.jpg', title:'婚礼片花 ②', role:'拍摄 / 剪辑' },
+  ],
+  '快剪': [
+    { img:'videos/快剪1-封面.jpg', title:'婚礼快剪 ①', role:'拍摄 / 剪辑' },
+    { img:'videos/快剪2-封面.jpg', title:'婚礼快剪 ②', role:'拍摄 / 剪辑' },
+    { img:'videos/快剪3-封面.jpg', title:'婚礼快剪 ③', role:'拍摄 / 剪辑' },
+    { img:'videos/快剪4-封面.jpg', title:'婚礼快剪 ④', role:'拍摄 / 剪辑' },
+  ],
+};
+
+Object.keys(data).forEach(key => {
+  const grid = document.getElementById('grid-' + key);
+  data[key].forEach(item => {
+    grid.innerHTML += `
+      <div class="card">
+        <img src="${encodeURI(item.img)}" alt="${item.title}">
+        <div class="info">
+          <div class="title">${item.title}</div>
+          <div class="role">${item.role}</div>
+        </div>
+      </div>`;
+  });
+});
+</script>
+</body>
+</html>
