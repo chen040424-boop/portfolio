@@ -1521,26 +1521,6 @@
         </p>
     </footer>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <script>
-    // Record visit timestamp to localStorage
-    (function() {
-        var key = 'site_visits_' + window.location.hostname;
-        var visits = JSON.parse(localStorage.getItem(key) || '[]');
-        var now = new Date().toLocaleString('zh-CN');
-        visits.push(now);
-        if (visits.length > 20) visits = visits.slice(-20);
-        localStorage.setItem(key, JSON.stringify(visits));
-
-        // Show last and previous visit in console
-        var total = visits.length;
-        var last = visits[visits.length - 1];
-        var prev = visits.length > 1 ? visits[visits.length - 2] : null;
-        console.log('📊 网站访问记录');
-        console.log('   本次打开：' + last);
-        if (prev) console.log('   上次打开：' + prev);
-        console.log('   本浏览器累计：' + total + ' 次');
-    })();
-    </script>
 
     <script>
         // ========== Navigation Toggle ==========
