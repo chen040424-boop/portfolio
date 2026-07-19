@@ -1697,7 +1697,11 @@
             ],
         };
 
-        // Populate gallery scroll containers
+        // ========== Lazy populate gallery on scroll ==========
+        let galleryPopulated = false;
+        function populateGallery() {
+            if (galleryPopulated) return;
+            galleryPopulated = true;
         Object.keys(galleryData).forEach(category => {
             const container = document.getElementById('scroll-' + category);
             if (!container) return;
@@ -1761,6 +1765,21 @@
                 container.appendChild(div);
             });
         });
+
+            });
+        }
+
+        // Observe portfolio section - only generate gallery when scrolled near
+        const portfolioSection = document.getElementById('portfolio');
+        if (portfolioSection) {
+            const galleryObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    populateGallery();
+                    galleryObserver.disconnect();
+                }
+            }, { rootMargin: '300px' });
+            galleryObserver.observe(portfolioSection);
+        }
 
         // Re-collect all gallery items after dynamic generation
         const allGalleryItems = () => document.querySelectorAll('.gallery-item');
