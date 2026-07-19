@@ -1140,8 +1140,8 @@
         }
 
         .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
 
         /* ========== Responsive ========== */
@@ -1555,10 +1555,15 @@
 
         fadeEls.forEach(el => observer.observe(el));
 
-        // Fallback: show all fade-in elements after 3s if observer hasn't fired
+        // Fallback: show all fade-in elements after 1s if observer hasn't fired
         setTimeout(() => {
             fadeEls.forEach(el => el.classList.add('visible'));
-        }, 3000);
+        }, 1000);
+
+        // Also trigger immediately on any scroll or touch
+        window.addEventListener('scroll', function showAll() {
+            fadeEls.forEach(el => el.classList.add('visible'));
+        }, { once: true });
 
         // ========== Gallery Dynamic Population ==========
         const basePath = 'images/';
